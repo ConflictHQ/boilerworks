@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://boilerworks.dev
+    about: Read the docs
+  - name: Discussions
+    url: https://github.com/ConflictHQ/boilerworks/discussions
+    about: Ask questions and share ideas
