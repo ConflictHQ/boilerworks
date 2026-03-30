@@ -86,7 +86,7 @@
   language: php
   backend: "Laravel 12"
   frontend: "Inertia + Vue 3"
-  status: building
+  status: done
   description: "Laravel ecosystem, SPA-like experience"
   topologies: [standard]
   best_for: "PHP teams wanting SPA feel without an API layer"
@@ -97,7 +97,7 @@
   language: python
   backend: "Django 5"
   frontend: "HTMX + Alpine.js"
-  status: building
+  status: done
   description: "Server-rendered CRUD, content-heavy, less JS"
   topologies: [standard]
   best_for: "Django teams preferring server-rendered HTML over SPAs"
@@ -108,7 +108,7 @@
   language: python
   backend: "Saleor (Django)"
   frontend: "Next.js 16"
-  status: building
+  status: done
   description: "E-commerce with headless commerce platform"
   topologies: [standard]
   best_for: "Teams building e-commerce storefronts"
@@ -119,7 +119,7 @@
   language: python
   backend: "FastAPI"
   frontend: "Next.js 16"
-  status: building
+  status: done
   description: "Modern Python API, async-first"
   topologies: [standard, api-only]
   best_for: "Python teams wanting async-first API with rich SPA frontend"
@@ -130,7 +130,7 @@
   language: go
   backend: "Go + Chi"
   frontend: "HTMX + Templ"
-  status: planned
+  status: done
   description: "Lightweight, performance-critical"
   topologies: [standard]
   best_for: "Go teams wanting lightweight server-rendered apps"
@@ -141,7 +141,7 @@
   language: java
   backend: "Spring Boot 3"
   frontend: "Next.js 16"
-  status: planned
+  status: done
   description: "Modern enterprise, non-Angular"
   topologies: [standard, api-only]
   best_for: "Java teams preferring React over Angular"
@@ -152,7 +152,7 @@
   language: php
   backend: "Laravel 12"
   frontend: "Livewire 3"
-  status: planned
+  status: done
   description: "Server-rendered reactive PHP"
   topologies: [standard]
   best_for: "PHP teams wanting server-rendered reactivity without JS"
@@ -163,7 +163,7 @@
   language: python
   backend: "FastAPI"
   frontend: "HTMX + Alpine.js"
-  status: planned
+  status: done
   description: "Lightweight Python, server-rendered"
   topologies: [standard]
   best_for: "FastAPI teams preferring server-rendered HTML"
@@ -231,7 +231,7 @@
   language: python
   backend: "CherryPy"
   frontend: ""
-  status: planned
+  status: done
   description: "Pure Python microservice, no WSGI overhead"
   topologies: [standard]
   best_for: "Minimal Python services without framework overhead"
@@ -244,7 +244,7 @@
   language: typescript
   backend: "Hono"
   frontend: ""
-  status: planned
+  status: done
   description: "Edge API, Cloudflare Workers"
   topologies: [standard]
   best_for: "Ultra-fast edge APIs on Cloudflare Workers"
@@ -266,7 +266,7 @@
   language: typescript
   backend: "Nuxt 4"
   frontend: "Vue (built-in)"
-  status: planned
+  status: done
   description: "Full-stack edge app, Vue ecosystem"
   topologies: [standard]
   best_for: "Vue teams building full-stack edge apps"
@@ -288,7 +288,7 @@
   language: typescript
   backend: "Astro"
   frontend: "Islands (multi-framework)"
-  status: planned
+  status: done
   description: "Content sites, blogs, docs, marketing"
   topologies: [standard]
   best_for: "Content-heavy sites, blogs, docs, and marketing pages"

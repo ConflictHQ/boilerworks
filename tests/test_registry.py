@@ -99,7 +99,7 @@ def test_search_case_insensitive(registry: Registry) -> None:
 
 def test_filter_by_status_done(registry: Registry) -> None:
     done = registry.filter_by_status("done")
-    assert len(done) == 14
+    assert len(done) == 26
     assert all(t.status == "done" for t in done)
 
 
