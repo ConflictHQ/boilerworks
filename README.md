@@ -4,7 +4,7 @@
 
 Boilerworks is a CLI that clones and configures any of 26 opinionated, best-of-breed project templates. Stop re-solving auth, permissions, Docker, CI, and admin panels from scratch. Pick a stack, run `boilerworks init`, and get straight to your business logic.
 
-```
+```bash
 pip install boilerworks
 boilerworks setup    # interactive wizard → writes boilerworks.yaml
 boilerworks init     # clone + configure the template
@@ -68,44 +68,44 @@ One command. Full stack. No manual setup.
 
 ### Full Templates (15)
 
-| Name | Backend | Frontend | Status |
-|------|---------|----------|--------|
-| django-nextjs | Django 5 | Next.js 16 | ✅ Done |
-| nestjs-nextjs | NestJS 11 | Next.js 16 | ✅ Done |
-| django-htmx | Django 5 | HTMX + Alpine.js | 🔨 Building |
-| saleor-nextjs | Saleor (Django) | Next.js 16 | 🔨 Building |
-| rails-hotwire | Rails 8 | Hotwire | 🔨 Building |
-| laravel-vue | Laravel 11 | Inertia + Vue 3 | 🔨 Building |
-| fastapi-nextjs | FastAPI | Next.js 16 | 🔨 Building |
-| fastapi-htmx | FastAPI | HTMX + Alpine.js | 📋 Planned |
-| spring-angular | Spring Boot 3 | Angular 19 | 📋 Planned |
-| go-htmx | Go + Chi/Echo | HTMX + Templ | 📋 Planned |
-| rails-nextjs | Rails 8 | Next.js 16 | 📋 Planned |
-| phoenix-liveview | Phoenix 1.7 | LiveView | 📋 Planned |
-| spring-nextjs | Spring Boot 3 | Next.js 16 | 📋 Planned |
-| go-nextjs | Go + Chi/Echo | Next.js 16 | 📋 Planned |
-| laravel-livewire | Laravel 11 | Livewire 3 | 📋 Planned |
+| Name | Backend | Frontend |
+|------|---------|----------|
+| [django-nextjs](https://github.com/ConflictHQ/boilerworks-django-nextjs) | Django 5 | Next.js 16 |
+| [nestjs-nextjs](https://github.com/ConflictHQ/boilerworks-nestjs-nextjs) | NestJS 11 | Next.js 16 |
+| [rails-hotwire](https://github.com/ConflictHQ/boilerworks-rails-hotwire) | Rails 8 | Hotwire + Tailwind |
+| [rails-nextjs](https://github.com/ConflictHQ/boilerworks-rails-nextjs) | Rails 8 | Next.js 16 |
+| [spring-angular](https://github.com/ConflictHQ/boilerworks-spring-angular) | Spring Boot 3 | Angular 19 |
+| [go-nextjs](https://github.com/ConflictHQ/boilerworks-go-nextjs) | Go + Chi | Next.js 16 |
+| [phoenix-liveview](https://github.com/ConflictHQ/boilerworks-phoenix-liveview) | Phoenix 1.7 | LiveView |
+| [laravel-vue](https://github.com/ConflictHQ/boilerworks-laravel-vue) | Laravel 12 | Inertia + Vue 3 |
+| [django-htmx](https://github.com/ConflictHQ/boilerworks-django-htmx) | Django 5 | HTMX + Alpine.js |
+| [fastapi-nextjs](https://github.com/ConflictHQ/boilerworks-fastapi-nextjs) | FastAPI | Next.js 16 |
+| [spring-nextjs](https://github.com/ConflictHQ/boilerworks-spring-nextjs) | Spring Boot 3 | Next.js 16 |
+| [laravel-livewire](https://github.com/ConflictHQ/boilerworks-laravel-livewire) | Laravel 12 | Livewire 3 |
+| [go-htmx](https://github.com/ConflictHQ/boilerworks-go-htmx) | Go + Chi | HTMX + Templ |
+| [fastapi-htmx](https://github.com/ConflictHQ/boilerworks-fastapi-htmx) | FastAPI | HTMX + Alpine.js |
+| [saleor-nextjs](https://github.com/ConflictHQ/boilerworks-saleor-nextjs) | Saleor (Django) | Next.js 16 |
 
 ### Micro Templates (6)
 
-| Name | Backend | Status |
-|------|---------|--------|
-| fastapi-micro | FastAPI | 🔨 Building |
-| django-micro | Django 5 (DRF/Ninja) | 📋 Planned |
-| nestjs-micro | NestJS 11 | 📋 Planned |
-| go-micro | Go + Chi/Echo | 📋 Planned |
-| cherrypy-micro | CherryPy | 📋 Planned |
-| rust-micro | Axum (Rust) | 📋 Planned |
+| Name | Backend |
+|------|---------|
+| [django-micro](https://github.com/ConflictHQ/boilerworks-django-micro) | Django 5 (DRF/Ninja) |
+| [fastapi-micro](https://github.com/ConflictHQ/boilerworks-fastapi-micro) | FastAPI |
+| [nestjs-micro](https://github.com/ConflictHQ/boilerworks-nestjs-micro) | NestJS 11 |
+| [go-micro](https://github.com/ConflictHQ/boilerworks-go-micro) | Go + Chi |
+| [rust-micro](https://github.com/ConflictHQ/boilerworks-rust-micro) | Axum (Rust) |
+| [cherrypy-micro](https://github.com/ConflictHQ/boilerworks-cherrypy-micro) | CherryPy |
 
 ### Edge Templates (5)
 
-| Name | Framework | Status |
-|------|-----------|--------|
-| hono-micro | Hono | 📋 Planned |
-| sveltekit-full | SvelteKit | 📋 Planned |
-| nuxt-full | Nuxt 4 | 📋 Planned |
-| remix-full | Remix | 📋 Planned |
-| astro-site | Astro | 📋 Planned |
+| Name | Framework |
+|------|-----------|
+| [sveltekit-full](https://github.com/ConflictHQ/boilerworks-sveltekit-full) | SvelteKit |
+| [remix-full](https://github.com/ConflictHQ/boilerworks-remix-full) | Remix |
+| [hono-micro](https://github.com/ConflictHQ/boilerworks-hono-micro) | Hono (Cloudflare Workers) |
+| [nuxt-full](https://github.com/ConflictHQ/boilerworks-nuxt-full) | Nuxt 4 |
+| [astro-site](https://github.com/ConflictHQ/boilerworks-astro-site) | Astro |
 
 ---
 
@@ -116,13 +116,11 @@ boilerworks --help              # show all commands
 boilerworks list                # show all 26 templates
 boilerworks list --size micro   # filter by size
 boilerworks list --language python  # filter by language
-boilerworks list --status done  # filter by status
 boilerworks setup               # interactive wizard
 boilerworks init                # generate project from boilerworks.yaml
 boilerworks init --dry-run      # preview what would happen
 boilerworks init --manifest ./path/to/boilerworks.yaml
 boilerworks init --output /path/to/output
-boilerworks bootstrap           # show infrastructure plan (v2)
 ```
 
 ---
@@ -137,6 +135,7 @@ family: django-nextjs
 size: full
 topology: standard
 cloud: aws
+ops: true
 region: us-east-1
 domain: myapp.com
 mobile: false
@@ -145,7 +144,6 @@ compliance:
   - soc2
 services:
   email: ses
-  storage: s3
   cache: redis
 data:
   database: postgres
@@ -165,16 +163,25 @@ See [`boilerworks.yaml.example`](boilerworks.yaml.example) for a fully annotated
 
 Every Boilerworks Full template ships with:
 
-- **Auth** — session-based (httpOnly cookies), SHA256-hashed tokens
+- **Auth** — session-based (httpOnly cookies), bcrypt passwords
 - **Permissions** — group-based, per-operation, checked at every endpoint
 - **Background jobs** — Redis-backed queue, retries, dead-letter handling
-- **File storage** — S3/MinIO with upload validation
-- **Search** — full-text search engine integration
 - **Email** — provider-agnostic (SES, SendGrid, Mailgun, Mailpit locally)
-- **Admin** — authenticated management interface
+- **Admin** — authenticated management interface with CRUD for all models
 - **Docker Compose** — one command to boot the full stack
 - **CI/CD** — GitHub Actions: lint, test, build, audit
 - **AI agent shims** — CLAUDE.md, AGENTS.md, bootstrap.md
+
+---
+
+## Infrastructure
+
+Pair any template with [boilerworks-opscode](https://github.com/ConflictHQ/boilerworks-opscode) for production Terraform:
+
+- **AWS** — ECS Fargate, RDS Postgres 16, ElastiCache Redis, ALB, Route53, ACM, S3, Secrets Manager
+- **GCP / Azure** — structured stubs ready for expansion
+
+Select a cloud in `boilerworks setup` and `boilerworks init` will clone and configure the ops repo alongside your app.
 
 ---
 
@@ -189,6 +196,7 @@ Issues and PRs welcome at [github.com/ConflictHQ/boilerworks](https://github.com
 ## Links
 
 - Documentation: [boilerworks.dev](https://boilerworks.dev)
+- Product: [boilerworks.ai](https://boilerworks.ai)
 - Templates: [github.com/ConflictHQ](https://github.com/ConflictHQ)
 
 ---
