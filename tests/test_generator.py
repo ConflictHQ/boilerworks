@@ -159,9 +159,11 @@ class TestCloneAndRenderOps:
         progress = MagicMock()
         progress.add_task.return_value = "task-id"
 
-        with patch("boilerworks.generator._clone_repo", side_effect=RuntimeError("clone failed")):
-            with pytest.raises(SystemExit):
-                _clone_and_render_ops("myproject", "aws", "us-east-1", None, ops_dest, progress)
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=RuntimeError("clone failed")),
+            pytest.raises(SystemExit),
+        ):
+            _clone_and_render_ops("myproject", "aws", "us-east-1", None, ops_dest, progress)
 
 
 class TestGenerateFromManifestErrors:
@@ -236,9 +238,11 @@ class TestGenerateWithOps:
             else:
                 self._seed_template(dest)
 
-        with patch("boilerworks.generator._clone_repo", side_effect=fake_clone):
-            with patch("boilerworks.generator.subprocess.run"):
-                generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
 
         assert call_count == 2
         assert (tmp_path / "myapp").exists()
@@ -269,9 +273,11 @@ class TestGenerateWithOps:
             else:
                 self._seed_template(dest)
 
-        with patch("boilerworks.generator._clone_repo", side_effect=fake_clone):
-            with patch("boilerworks.generator.subprocess.run"):
-                generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
 
         assert call_count == 2
         assert (tmp_path / "myapp").exists()
@@ -297,9 +303,11 @@ class TestGenerateWithOps:
             call_count += 1
             self._seed_template(dest)
 
-        with patch("boilerworks.generator._clone_repo", side_effect=fake_clone):
-            with patch("boilerworks.generator.subprocess.run"):
-                generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
 
         assert call_count == 1
         assert (tmp_path / "myapp").exists()
@@ -324,9 +332,11 @@ class TestGenerateWithOps:
         def fake_clone(repo: str, dest: Path) -> None:
             self._seed_template(dest)
 
-        with patch("boilerworks.generator._clone_repo", side_effect=fake_clone):
-            with patch("boilerworks.generator.subprocess.run"):
-                with pytest.raises(SystemExit):
-                    generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+            pytest.raises(SystemExit),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
 
         shutil.rmtree(tmp_path / "myapp", ignore_errors=True)
