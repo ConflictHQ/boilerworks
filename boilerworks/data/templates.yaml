@@ -25,6 +25,72 @@
   topologies: [standard, omni, api-only]
   best_for: "TypeScript-first teams building enterprise applications"
 
+- name: rails-hotwire
+  repo: ConflictHQ/boilerworks-rails-hotwire
+  size: full
+  language: ruby
+  backend: "Rails 8"
+  frontend: "Hotwire (Turbo + Stimulus)"
+  status: done
+  description: "Marketplace, social, content, CMS"
+  topologies: [standard]
+  best_for: "Ruby teams wanting Rails-native reactive UI"
+
+- name: rails-nextjs
+  repo: ConflictHQ/boilerworks-rails-nextjs
+  size: full
+  language: ruby
+  backend: "Rails 8"
+  frontend: "Next.js 16"
+  status: done
+  description: "Rails backend, richer frontend than Hotwire"
+  topologies: [standard, api-only]
+  best_for: "Ruby teams whose frontend needs exceed Hotwire"
+
+- name: spring-angular
+  repo: ConflictHQ/boilerworks-spring-angular
+  size: full
+  language: java
+  backend: "Spring Boot 3"
+  frontend: "Angular 19"
+  status: done
+  description: "Enterprise, banking, fintech"
+  topologies: [standard]
+  best_for: "Java teams in enterprise, banking, or fintech"
+
+- name: go-nextjs
+  repo: ConflictHQ/boilerworks-go-nextjs
+  size: full
+  language: go
+  backend: "Go + Chi"
+  frontend: "Next.js 16"
+  status: done
+  description: "API-first Go, rich frontend"
+  topologies: [standard, api-only]
+  best_for: "Go teams wanting an API-first approach with rich SPA"
+
+- name: phoenix-liveview
+  repo: ConflictHQ/boilerworks-phoenix-liveview
+  size: full
+  language: elixir
+  backend: "Phoenix 1.7"
+  frontend: "LiveView"
+  status: done
+  description: "Real-time, collaborative"
+  topologies: [standard]
+  best_for: "Elixir teams building real-time collaborative apps"
+
+- name: laravel-vue
+  repo: ConflictHQ/boilerworks-laravel-vue
+  size: full
+  language: php
+  backend: "Laravel 12"
+  frontend: "Inertia + Vue 3"
+  status: building
+  description: "Laravel ecosystem, SPA-like experience"
+  topologies: [standard]
+  best_for: "PHP teams wanting SPA feel without an API layer"
+
 - name: django-htmx
   repo: ConflictHQ/boilerworks-django-htmx
   size: full
@@ -47,28 +113,6 @@
   topologies: [standard]
   best_for: "Teams building e-commerce storefronts"
 
-- name: rails-hotwire
-  repo: ConflictHQ/boilerworks-rails-hotwire
-  size: full
-  language: ruby
-  backend: "Rails 8"
-  frontend: "Hotwire (Turbo + Stimulus)"
-  status: building
-  description: "Marketplace, social, content, CMS"
-  topologies: [standard]
-  best_for: "Ruby teams wanting Rails-native reactive UI"
-
-- name: laravel-vue
-  repo: ConflictHQ/boilerworks-laravel-vue
-  size: full
-  language: php
-  backend: "Laravel 11"
-  frontend: "Inertia + Vue 3"
-  status: building
-  description: "Laravel ecosystem, SPA-like experience"
-  topologies: [standard]
-  best_for: "PHP teams wanting SPA feel without an API layer"
-
 - name: fastapi-nextjs
   repo: ConflictHQ/boilerworks-fastapi-nextjs
   size: full
@@ -80,60 +124,16 @@
   topologies: [standard, api-only]
   best_for: "Python teams wanting async-first API with rich SPA frontend"
 
-- name: fastapi-htmx
-  repo: ConflictHQ/boilerworks-fastapi-htmx
-  size: full
-  language: python
-  backend: "FastAPI"
-  frontend: "HTMX + Alpine.js"
-  status: planned
-  description: "Lightweight Python, server-rendered"
-  topologies: [standard]
-  best_for: "FastAPI teams preferring server-rendered HTML"
-
-- name: spring-angular
-  repo: ConflictHQ/boilerworks-spring-angular
-  size: full
-  language: java
-  backend: "Spring Boot 3"
-  frontend: "Angular 19"
-  status: planned
-  description: "Enterprise, banking, fintech"
-  topologies: [standard]
-  best_for: "Java teams in enterprise, banking, or fintech"
-
 - name: go-htmx
   repo: ConflictHQ/boilerworks-go-htmx
   size: full
   language: go
-  backend: "Go + Chi/Echo"
+  backend: "Go + Chi"
   frontend: "HTMX + Templ"
   status: planned
   description: "Lightweight, performance-critical"
   topologies: [standard]
   best_for: "Go teams wanting lightweight server-rendered apps"
-
-- name: rails-nextjs
-  repo: ConflictHQ/boilerworks-rails-nextjs
-  size: full
-  language: ruby
-  backend: "Rails 8"
-  frontend: "Next.js 16"
-  status: planned
-  description: "Rails backend, richer frontend than Hotwire"
-  topologies: [standard, api-only]
-  best_for: "Ruby teams whose frontend needs exceed Hotwire"
-
-- name: phoenix-liveview
-  repo: ConflictHQ/boilerworks-phoenix-liveview
-  size: full
-  language: elixir
-  backend: "Phoenix 1.7"
-  frontend: "LiveView"
-  status: planned
-  description: "Real-time, collaborative"
-  topologies: [standard]
-  best_for: "Elixir teams building real-time collaborative apps"
 
 - name: spring-nextjs
   repo: ConflictHQ/boilerworks-spring-nextjs
@@ -146,27 +146,27 @@
   topologies: [standard, api-only]
   best_for: "Java teams preferring React over Angular"
 
-- name: go-nextjs
-  repo: ConflictHQ/boilerworks-go-nextjs
-  size: full
-  language: go
-  backend: "Go + Chi/Echo"
-  frontend: "Next.js 16"
-  status: planned
-  description: "API-first Go, rich frontend"
-  topologies: [standard, api-only]
-  best_for: "Go teams wanting an API-first approach with rich SPA"
-
 - name: laravel-livewire
   repo: ConflictHQ/boilerworks-laravel-livewire
   size: full
   language: php
-  backend: "Laravel 11"
+  backend: "Laravel 12"
   frontend: "Livewire 3"
   status: planned
   description: "Server-rendered reactive PHP"
   topologies: [standard]
   best_for: "PHP teams wanting server-rendered reactivity without JS"
+
+- name: fastapi-htmx
+  repo: ConflictHQ/boilerworks-fastapi-htmx
+  size: full
+  language: python
+  backend: "FastAPI"
+  frontend: "HTMX + Alpine.js"
+  status: planned
+  description: "Lightweight Python, server-rendered"
+  topologies: [standard]
+  best_for: "FastAPI teams preferring server-rendered HTML"
 
 # ─── Micro Templates (6) ──────────────────────────────────────────────────────
 
@@ -176,7 +176,7 @@
   language: python
   backend: "Django 5 (DRF/Ninja)"
   frontend: ""
-  status: planned
+  status: done
   description: "API-only Python service"
   topologies: [standard]
   best_for: "Python microservices with Django's ORM and admin"
@@ -187,7 +187,7 @@
   language: python
   backend: "FastAPI"
   frontend: ""
-  status: building
+  status: done
   description: "Lightweight async Python API"
   topologies: [standard]
   best_for: "High-performance async Python microservices"
@@ -198,7 +198,7 @@
   language: typescript
   backend: "NestJS 11"
   frontend: ""
-  status: planned
+  status: done
   description: "API-only TypeScript service"
   topologies: [standard]
   best_for: "TypeScript microservices with NestJS DI and modules"
@@ -207,12 +207,23 @@
   repo: ConflictHQ/boilerworks-go-micro
   size: micro
   language: go
-  backend: "Go + Chi/Echo"
+  backend: "Go + Chi"
   frontend: ""
-  status: planned
+  status: done
   description: "Lightweight Go service"
   topologies: [standard]
   best_for: "High-throughput Go microservices"
+
+- name: rust-micro
+  repo: ConflictHQ/boilerworks-rust-micro
+  size: micro
+  language: rust
+  backend: "Axum (Rust)"
+  frontend: ""
+  status: done
+  description: "High-performance Rust microservice"
+  topologies: [standard]
+  best_for: "Maximum performance microservices in Rust"
 
 - name: cherrypy-micro
   repo: ConflictHQ/boilerworks-cherrypy-micro
@@ -224,17 +235,6 @@
   description: "Pure Python microservice, no WSGI overhead"
   topologies: [standard]
   best_for: "Minimal Python services without framework overhead"
-
-- name: rust-micro
-  repo: ConflictHQ/boilerworks-rust-micro
-  size: micro
-  language: rust
-  backend: "Axum (Rust)"
-  frontend: ""
-  status: planned
-  description: "High-performance Rust microservice"
-  topologies: [standard]
-  best_for: "Maximum performance microservices in Rust"
 
 # ─── Edge Templates (5) ───────────────────────────────────────────────────────
 
@@ -255,7 +255,7 @@
   language: svelte
   backend: "SvelteKit"
   frontend: "Svelte (built-in)"
-  status: planned
+  status: done
   description: "Full-stack edge app, simplest DX"
   topologies: [standard]
   best_for: "Svelte teams building full-stack edge apps"
@@ -277,7 +277,7 @@
   language: typescript
   backend: "Remix"
   frontend: "React (built-in)"
-  status: planned
+  status: done
   description: "Server-first React at the edge"
   topologies: [standard]
   best_for: "React teams building server-first edge apps"
