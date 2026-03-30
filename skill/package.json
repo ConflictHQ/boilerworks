@@ -1,0 +1,29 @@
+{
+  "name": "@conflict/boilerworks",
+  "version": "0.1.0",
+  "description": "Claude Code skill for Boilerworks — AI-ready project templates that ship fast",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skill",
+    "boilerworks",
+    "scaffolding",
+    "templates",
+    "ai"
+  ],
+  "homepage": "https://boilerworks.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ConflictHQ/boilerworks.git",
+    "directory": "skill"
+  },
+  "license": "MIT",
+  "files": [
+    "skill.md"
+  ],
+  "claude": {
+    "skill": "skill.md",
+    "name": "boilerworks",
+    "description": "AI-ready Boilerworks project templates — pick a stack, ship in minutes"
+  }
+}

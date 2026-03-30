@@ -29,8 +29,12 @@ dependencies = [
     "pyyaml>=6.0",
 ]
 
+[project.optional-dependencies]
+mcp = ["mcp[cli]>=1.0"]
+
 [project.scripts]
 boilerworks = "boilerworks.cli:main"
+boilerworks-mcp = "boilerworks.mcp_server:main"
 
 [project.urls]
 Homepage = "https://boilerworks.dev"
