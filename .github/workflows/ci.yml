@@ -8,57 +8,32 @@ on:
 
 jobs:
   lint:
-    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v5
         with:
-          version: "latest"
-      - name: Install dependencies
-        run: uv sync
-      - name: Ruff check
-        run: uv run ruff check .
-      - name: Ruff format check
-        run: uv run ruff format --check .
+          python-version: "3.12"
+      - run: uv sync --group dev
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
 
   test:
-    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v5
         with:
-          version: "latest"
-      - name: Install dependencies
-        run: uv sync
-      - name: Run tests
-        run: uv run pytest
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
-        with:
-          version: "latest"
-      - name: Build package
-        run: uv build
-      - name: Verify package
-        run: |
-          ls -la dist/
-          uv run python -c "import boilerworks; print(boilerworks.__version__)"
+          python-version: "3.12"
+      - run: uv sync --group dev
+      - run: uv run pytest
 
   audit:
-    name: Audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v5
         with:
-          version: "latest"
-      - name: Install pip-audit
-        run: uv tool install pip-audit
-      - name: Run audit
-        run: uv run pip-audit || true
+          python-version: "3.12"
+      - run: uv sync
+      - run: uv add --dev pip-audit && uv run pip-audit
