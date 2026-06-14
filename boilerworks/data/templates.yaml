@@ -1,7 +1,7 @@
 # Boilerworks Template Catalogue
-# 26 templates across Full / Micro / Edge sizes
+# 27 templates across Full / Micro / Edge sizes
 
-# ─── Full Templates (15) ──────────────────────────────────────────────────────
+# ─── Full Templates (16) ──────────────────────────────────────────────────────
 
 - name: django-nextjs
   repo: ConflictHQ/boilerworks-django-nextjs
@@ -124,6 +124,28 @@
   topologies: [standard, api-only]
   best_for: "Python teams wanting async-first API with rich SPA frontend"
 
+- name: fastapi-react-admin
+  repo: ConflictHQ/boilerworks-fastapi-react-admin
+  size: full
+  language: python
+  backend: "FastAPI"
+  frontend: "React + Vite + shadcn/ui"
+  status: planned
+  description: "Internal tools with pre-built CRUD patterns and RBAC"
+  topologies: [standard]
+  best_for: "Admin panels, inventory systems, CRM tools, and internal business applications"
+
+- name: nextjs-fullstack
+  repo: ConflictHQ/boilerworks-nextjs-fullstack
+  size: full
+  language: typescript
+  backend: "Next.js API Routes"
+  frontend: "Next.js 15"
+  status: planned
+  description: "Simple full-stack Next.js application"
+  topologies: [standard]
+  best_for: "Simple web apps, prototypes, landing pages with backend, and internal tools"
+  
 - name: go-htmx
   repo: ConflictHQ/boilerworks-go-htmx
   size: full
