@@ -23,6 +23,7 @@
 | Go | `go-nextjs`, `go-micro` |
 | Elixir | `phoenix-liveview`, `phoenix-micro` |
 | Rust | `rust-micro` |
+|Full-stack JS (single app) | `nextjs-fullstack`, `remix-full`, `sveltekit-full` |
 | Full-stack JS (no separate backend) | `remix-full`, `sveltekit-full`, `remix-edge`, `sveltekit-edge` |
 
 ## By frontend preference
@@ -30,6 +31,7 @@
 | Frontend | Full templates |
 |----------|---------------|
 | Next.js (React) | `django-nextjs`, `rails-nextjs`, `nestjs-nextjs`, `go-nextjs` |
+| Next.js (full-stack) | `nextjs-fullstack` |
 | Vue (Inertia) | `laravel-vue` |
 | Angular | `spring-angular` |
 | Hotwire (server-rendered) | `rails-hotwire` |

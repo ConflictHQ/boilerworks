@@ -124,6 +124,17 @@
   topologies: [standard, api-only]
   best_for: "Python teams wanting async-first API with rich SPA frontend"
 
+- name: nextjs-fullstack
+  repo: ConflictHQ/boilerworks-nextjs-fullstack
+  size: full
+  language: typescript
+  backend: "Next.js API Routes"
+  frontend: "Next.js 15"
+  status: planned
+  description: "Simple full-stack Next.js application"
+  topologies: [standard]
+  best_for: "Simple web apps, prototypes, landing pages with backend, and internal tools"
+  
 - name: go-htmx
   repo: ConflictHQ/boilerworks-go-htmx
   size: full
