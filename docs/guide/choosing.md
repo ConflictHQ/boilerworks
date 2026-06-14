@@ -23,8 +23,9 @@
 | Go | `go-nextjs`, `go-micro` |
 | Elixir | `phoenix-liveview`, `phoenix-micro` |
 | Rust | `rust-micro` |
-|Full-stack JS (single app) | `nextjs-fullstack`, `remix-full`, `sveltekit-full` |
+| Full-stack JS (single app) | `nextjs-fullstack`, `remix-full`, `sveltekit-full` |
 | Full-stack JS (no separate backend) | `remix-full`, `sveltekit-full`, `remix-edge`, `sveltekit-edge` |
+| Bun / Hono | `hono-react` |
 
 ## By frontend preference
 
@@ -38,6 +39,7 @@
 | LiveView (server-rendered) | `phoenix-liveview` |
 | Remix | `remix-full`, `remix-edge` |
 | SvelteKit | `sveltekit-full`, `sveltekit-edge` |
+| React (Vite) | `hono-react` |
 
 ## Crown jewels
 

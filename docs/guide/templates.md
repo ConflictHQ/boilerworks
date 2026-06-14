@@ -19,6 +19,8 @@ Apps with user auth, group permissions, and full admin interface.
 | `sveltekit-full` | SvelteKit | — | Session | — |
 | `phoenix-liveview` | Phoenix | LiveView | Session | Oban |
 | `nextjs-fullstack` | Next.js API Routes | Next.js 15 | Session | — |
+| `hono-react` | Hono + Bun | React + Vite | Session | — |
+
 ### What's in every Full template
 
 - **User model** with `has_secure_password` / bcrypt

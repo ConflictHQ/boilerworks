@@ -1,7 +1,7 @@
 # Boilerworks Template Catalogue
-# 26 templates across Full / Micro / Edge sizes
+# 27 templates across Full / Micro / Edge sizes
 
-# ─── Full Templates (15) ──────────────────────────────────────────────────────
+# ─── Full Templates (16) ──────────────────────────────────────────────────────
 
 - name: django-nextjs
   repo: ConflictHQ/boilerworks-django-nextjs
@@ -123,6 +123,17 @@
   description: "Modern Python API, async-first"
   topologies: [standard, api-only]
   best_for: "Python teams wanting async-first API with rich SPA frontend"
+
+- name: hono-react
+  repo: ConflictHQ/boilerworks-hono-react
+  size: full
+  language: typescript
+  backend: "Hono + Bun"
+  frontend: "React + Vite"
+  status: planned
+  description: "High-performance Bun + Hono full-stack application"
+  topologies: [standard]
+  best_for: "Performance-critical apps and high-traffic APIs"
 
 - name: nextjs-fullstack
   repo: ConflictHQ/boilerworks-nextjs-fullstack
