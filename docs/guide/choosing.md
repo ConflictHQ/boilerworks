@@ -10,6 +10,7 @@
 | Microservice in a larger system | Micro |
 | Marketing site or landing page | Edge |
 | Globally distributed API | Edge |
+| Internal admin tool / CRUD dashboard | Full |
 
 ## By your team's stack
 
@@ -23,8 +24,10 @@
 | Go | `go-nextjs`, `go-micro` |
 | Elixir | `phoenix-liveview`, `phoenix-micro` |
 | Rust | `rust-micro` |
-|Full-stack JS (single app) | `nextjs-fullstack`, `remix-full`, `sveltekit-full` |
+|Full-stack JS (single app) | `nextjs-fullstack`, `remix-full`, `sveltekit-full` |s
 | Full-stack JS (no separate backend) | `remix-full`, `sveltekit-full`, `remix-edge`, `sveltekit-edge` |
+| Bun / Hono | `hono-react` |
+| Python (admin tools) | `fastapi-react-admin` |
 
 ## By frontend preference
 
@@ -38,6 +41,7 @@
 | LiveView (server-rendered) | `phoenix-liveview` |
 | Remix | `remix-full`, `remix-edge` |
 | SvelteKit | `sveltekit-full`, `sveltekit-edge` |
+| React + Vite | `hono-react`, `fastapi-react-admin` |
 
 ## Crown jewels
 
