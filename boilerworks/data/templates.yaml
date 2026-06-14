@@ -179,6 +179,17 @@
   topologies: [standard]
   best_for: "FastAPI teams preferring server-rendered HTML"
 
+- name: sveltekit-prisma
+  repo: ConflictHQ/boilerworks-sveltekit-prisma
+  size: full
+  language: typescript
+  backend: "SvelteKit + Prisma + Lucia"
+  frontend: "Svelte (built-in)"
+  status: planned
+  description: "Production-ready SvelteKit with Prisma ORM and authentication"
+  topologies: [standard]
+  best_for: "Svelte teams wanting database access, authentication, and minimal boilerplate"
+
 # ─── Micro Templates (6) ──────────────────────────────────────────────────────
 
 - name: django-micro

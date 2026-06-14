@@ -25,7 +25,7 @@
 | Rust | `rust-micro` |
 |Full-stack JS (single app) | `nextjs-fullstack`, `remix-full`, `sveltekit-full` |
 | Full-stack JS (no separate backend) | `remix-full`, `sveltekit-full`, `remix-edge`, `sveltekit-edge` |
-
+| Svelte (full-stack) | `sveltekit-prisma`, `sveltekit-full` |
 ## By frontend preference
 
 | Frontend | Full templates |
@@ -38,7 +38,7 @@
 | LiveView (server-rendered) | `phoenix-liveview` |
 | Remix | `remix-full`, `remix-edge` |
 | SvelteKit | `sveltekit-full`, `sveltekit-edge` |
-
+| SvelteKit + Prisma | `sveltekit-prisma` |
 ## Crown jewels
 
 **`django-nextjs`** — the reference implementation. Every pattern in the catalogue was refined here first. Django 5 backend with Strawberry GraphQL, Next.js 16 frontend with Apollo Client. If you're unsure, start here.
