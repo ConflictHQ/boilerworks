@@ -39,15 +39,22 @@ def _run(script: str) -> subprocess.CompletedProcess:
 
 
 @pytest.fixture(scope="module")
-def generated() -> dict[str, bytes]:
-    """Run the kg + brain generators once (as `make kg && make brain` does)."""
+def generated():
+    """Run the kg + brain generators once (as `make kg && make brain` does).
+
+    Snapshots app/ first and restores it after the module: the committed
+    app/brain.json is the FEDERATED graph (make aggregate-brain), and the
+    single-repo regeneration here must not leave it reverted on disk."""
+    originals = {p: p.read_bytes() for p in (APP / "knowledge_graph.json", APP / "brain.json") if p.exists()}
     for script in ("gen-template-kg.py", "gen-brain.py"):
         proc = _run(script)
         assert proc.returncode == 0, f"{script} failed: {proc.stderr}"
-    return {
+    yield {
         "kg": (APP / "knowledge_graph.json").read_bytes(),
         "brain": (APP / "brain.json").read_bytes(),
     }
+    for p, data in originals.items():
+        p.write_bytes(data)
 
 
 def test_generators_are_deterministic(generated):

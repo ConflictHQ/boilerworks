@@ -136,12 +136,33 @@ def _ns(repo: str, nid: str) -> str:
     return f"{repo}/{nid}"
 
 
-def _sub_brain(graph, repo: str, source_path: str | None = None) -> tuple[list[dict], list[dict]]:
+def _reroot_source(node: dict, prefix: str) -> None:
+    """Rewrite a sub-brain node's repo-relative `source` to be parent-relative
+    (prefix = the submodule dir). Post-federation, provenance means "where under
+    THIS root did the row come from" — a sub's `app/decisions.json` is the
+    parent's `<sub>/app/decisions.json`. Absolute paths pass through; a dict
+    source ({path: ...}) is rewritten in place. Idempotent across federation
+    levels: a grandchild path already rewritten by the child gets the child's
+    dir prefixed again, which is exactly its location under the grandparent."""
+    src = node.get("source")
+    if isinstance(src, str) and src and not os.path.isabs(src):
+        node["source"] = os.path.join(prefix, src)
+    elif isinstance(src, dict):
+        p = src.get("path")
+        if isinstance(p, str) and p and not os.path.isabs(p):
+            node["source"] = {**src, "path": os.path.join(prefix, p)}
+
+
+def _sub_brain(
+    graph, repo: str, source_path: str | None = None, path_prefix: str | None = None
+) -> tuple[list[dict], list[dict]]:
     """Project one repo's compiled brain into the federated namespace.
 
     Returns (nodes, edges): every node id prefixed with `<repo>/`, a synthetic
     `repo:<repo>` anchor node, every edge endpoint rewritten, and an `in_repo`
-    edge from each of the repo's own nodes to its anchor.
+    edge from each of the repo's own nodes to its anchor. When `path_prefix` is
+    given (the submodule dir), node `source` paths are rerooted under it so the
+    parent's provenance gate (check-brain) resolves them.
 
     The anchor carries a `source` — the repo-relative path of the sub-brain it was
     synthesized from (`<sub>/app/brain.json`, or the code-KG json) — so
@@ -170,6 +191,8 @@ def _sub_brain(graph, repo: str, source_path: str | None = None) -> tuple[list[d
             continue
         m = dict(n)
         m["id"] = _ns(repo, n["id"])
+        if path_prefix:
+            _reroot_source(m, path_prefix)
         nodes.append(m)
         # Anchor only the repo's OWN nodes (not pass-through cross-repo ids).
         if m["id"].startswith(f"{repo}/"):
@@ -235,7 +258,8 @@ def aggregate(sources: list[tuple], self_graph: dict | None = None) -> dict:
     for src in sources:
         repo, graph = src[0], src[1]
         source_path = src[2] if len(src) > 2 else None
-        ns, es = _sub_brain(graph, repo, source_path)
+        path_prefix = src[3] if len(src) > 3 else None
+        ns, es = _sub_brain(graph, repo, source_path, path_prefix)
         for n in ns:
             nodes_by_id.setdefault(n["id"], n)  # first writer wins, stable
         edges.extend(es)
@@ -277,7 +301,7 @@ def _collect(submodules: list[str], code_kg: list[str]) -> list[tuple[str, dict,
         rel = os.path.join(sub, *SUB_BRAIN)
         graph = _load(os.path.join(ROOT, sub, *SUB_BRAIN))
         if isinstance(graph, dict):
-            sources.append((repo, graph, rel))
+            sources.append((repo, graph, rel, os.path.normpath(sub)))
     for spec in code_kg:
         repo, _, path = spec.partition("=")
         repo, path = repo.strip(), path.strip()
