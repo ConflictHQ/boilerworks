@@ -67,3 +67,7 @@ def list_command(size: str | None, language: str | None, status: str | None) -> 
         templates = [t for t in templates if t.status == status]
 
     print_template_table(templates)
+
+
+if __name__ == "__main__":
+    main()  # pragma: no cover
