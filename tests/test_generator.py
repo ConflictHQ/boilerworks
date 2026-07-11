@@ -340,3 +340,127 @@ class TestGenerateWithOps:
             generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
 
         shutil.rmtree(tmp_path / "myapp", ignore_errors=True)
+
+
+class TestGenerateWithAddons:
+    """mobile and web_presence flags clone addon templates into the app repo."""
+
+    def _seed_template(self, dest: Path, project: str = "boilerworks") -> None:
+        dest.mkdir(parents=True, exist_ok=True)
+        (dest / ".git").mkdir()
+        (dest / "README.md").write_text(f"# {project.title()}\nA {project} app.\n")
+
+    def _manifest_file(self, tmp_path: Path, *, mobile: bool = False, web_presence: bool = False) -> Path:
+        manifest = BoilerworksManifest(
+            project="myapp",
+            family="django-nextjs",
+            size="full",
+            topology="standard",
+            mobile=mobile,
+            web_presence=web_presence,
+        )
+        manifest_file = tmp_path / "boilerworks.yaml"
+        manifest.to_file(manifest_file)
+        return manifest_file
+
+    def test_generate_with_mobile(self, tmp_path: Path) -> None:
+        """mobile=True clones the react-native-expo repo into mobile/ inside the app."""
+        manifest_file = self._manifest_file(tmp_path, mobile=True)
+        cloned: list[str] = []
+
+        def fake_clone(repo: str, dest: Path) -> None:
+            cloned.append(repo)
+            self._seed_template(dest)
+
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+
+        assert "ConflictHQ/boilerworks-react-native-expo" in cloned
+        assert (tmp_path / "myapp" / "mobile").exists()
+        assert not (tmp_path / "myapp" / "mobile" / ".git").exists()
+        assert "Myapp" in (tmp_path / "myapp" / "mobile" / "README.md").read_text()
+
+    def test_generate_with_web_presence(self, tmp_path: Path) -> None:
+        """web_presence=True clones the astro-site repo into site/ inside the app."""
+        manifest_file = self._manifest_file(tmp_path, web_presence=True)
+        cloned: list[str] = []
+
+        def fake_clone(repo: str, dest: Path) -> None:
+            cloned.append(repo)
+            self._seed_template(dest)
+
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+
+        assert "ConflictHQ/boilerworks-astro-site" in cloned
+        assert (tmp_path / "myapp" / "site").exists()
+        assert not (tmp_path / "myapp" / "site" / ".git").exists()
+
+    def test_generate_with_both_addons(self, tmp_path: Path) -> None:
+        """Both flags: app + mobile/ + site/ (three clones total)."""
+        manifest_file = self._manifest_file(tmp_path, mobile=True, web_presence=True)
+        cloned: list[str] = []
+
+        def fake_clone(repo: str, dest: Path) -> None:
+            cloned.append(repo)
+            self._seed_template(dest)
+
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+
+        assert len(cloned) == 3
+        assert (tmp_path / "myapp" / "mobile").exists()
+        assert (tmp_path / "myapp" / "site").exists()
+
+    def test_generate_without_addons_clones_nothing_extra(self, tmp_path: Path) -> None:
+        manifest_file = self._manifest_file(tmp_path)
+        cloned: list[str] = []
+
+        def fake_clone(repo: str, dest: Path) -> None:
+            cloned.append(repo)
+            self._seed_template(dest)
+
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+
+        assert cloned == ["ConflictHQ/boilerworks-django-nextjs"]
+
+    def test_addon_clone_failure_exits(self, tmp_path: Path) -> None:
+        """When cloning an addon fails, process exits."""
+        manifest_file = self._manifest_file(tmp_path, mobile=True)
+
+        def fake_clone(repo: str, dest: Path) -> None:
+            if "react-native-expo" in repo:
+                raise RuntimeError("clone failed")
+            self._seed_template(dest)
+
+        with (
+            patch("boilerworks.generator._clone_repo", side_effect=fake_clone),
+            patch("boilerworks.generator.subprocess.run"),
+            pytest.raises(SystemExit),
+        ):
+            generate_from_manifest(manifest_path=str(manifest_file), output_dir=str(tmp_path))
+
+    def test_dry_run_with_addons_creates_nothing(self, tmp_path: Path) -> None:
+        """Dry-run with both addon flags shows the plan without cloning or writing."""
+        manifest = BoilerworksManifest(
+            project="myapp",
+            family="django-nextjs",
+            size="full",
+            mobile=True,
+            web_presence=True,
+        )
+        _dry_run_plan(manifest, tmp_path)
+        assert not (tmp_path / "myapp").exists()

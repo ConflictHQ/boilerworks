@@ -15,6 +15,10 @@ from boilerworks.registry import Registry
 from boilerworks.renderer import build_replacements, rename_boilerworks_paths, render_directory
 
 _OPS_REPO = "ConflictHQ/boilerworks-opscode"
+# Addon repos wired via manifest flags (not selectable catalogue entries).
+# astro-site is the catalogue's web-presence template; hugo-be/site/new-cms are not catalogue-ready.
+_MOBILE_REPO = "ConflictHQ/boilerworks-react-native-expo"  # mobile: true → mobile/
+_SITE_REPO = "ConflictHQ/boilerworks-astro-site"  # web_presence: true → site/
 
 _NEXT_STEPS_TEMPLATE = """[bold]Project created at:[/bold] {project_dir}
 
@@ -187,6 +191,30 @@ def _clone_and_render_ops(
     progress.remove_task(task)
 
 
+def _clone_and_render_addon(repo: str, project: str, dest: Path, label: str, progress: Progress) -> None:
+    """Clone an addon template (mobile app / marketing site) into the project and render it."""
+    task = progress.add_task(f"Cloning {repo}…", total=None)
+    try:
+        _clone_repo(repo, dest)
+    except RuntimeError as exc:
+        progress.stop()
+        print_error(str(exc))
+        sys.exit(1)
+    progress.remove_task(task)
+
+    task = progress.add_task(f"Removing .git/ from {label}…", total=None)
+    _remove_git_dir(dest)
+    progress.remove_task(task)
+
+    task = progress.add_task(f"Applying {label} substitutions…", total=None)
+    render_directory(dest, build_replacements(project))
+    progress.remove_task(task)
+
+    task = progress.add_task(f"Renaming {label} paths…", total=None)
+    rename_boilerworks_paths(dest, project)
+    progress.remove_task(task)
+
+
 def _dry_run_plan(manifest: BoilerworksManifest, output_dir: Path) -> None:
     """Print what would happen without doing it."""
     registry = Registry()
@@ -201,22 +229,29 @@ def _dry_run_plan(manifest: BoilerworksManifest, output_dir: Path) -> None:
         f"[dim]3.[/dim] Replace all 'boilerworks' → '[bold]{manifest.project}[/bold]' (case-variant)",
         "[dim]4.[/dim] Rename files/dirs containing 'boilerworks'",
         "[dim]5.[/dim] Update CLAUDE.md and README.md headers",
-        f"[dim]6.[/dim] git init + initial commit in [bold]{project_dir}[/bold]",
     ]
+    if manifest.mobile:
+        steps.append(
+            f"[dim]{len(steps) + 1}.[/dim] Clone [cyan]{_MOBILE_REPO}[/cyan] → "
+            f"[bold]{project_dir}/mobile/[/bold] (render + rename)"
+        )
+    if manifest.web_presence:
+        steps.append(
+            f"[dim]{len(steps) + 1}.[/dim] Clone [cyan]{_SITE_REPO}[/cyan] → "
+            f"[bold]{project_dir}/site/[/bold] (render + rename)"
+        )
+    steps.append(f"[dim]{len(steps) + 1}.[/dim] git init + initial commit in [bold]{project_dir}[/bold]")
     if manifest.ops and manifest.cloud:
         ops_dest = f"{project_dir}/ops/" if manifest.topology == "omni" else str(output_dir / f"{manifest.project}-ops")
         steps += [
-            f"[dim]7.[/dim] Clone [cyan]{_OPS_REPO}[/cyan] → [bold]{ops_dest}[/bold]",
-            f"[dim]8.[/dim] Render + rename ops files (boilerworks → {manifest.project})",
-            f"[dim]9.[/dim] Write [cyan]{manifest.cloud}/config.env[/cyan] (project, region, domain)",
+            f"[dim]{len(steps) + 1}.[/dim] Clone [cyan]{_OPS_REPO}[/cyan] → [bold]{ops_dest}[/bold]",
+            f"[dim]{len(steps) + 2}.[/dim] Render + rename ops files (boilerworks → {manifest.project})",
+            f"[dim]{len(steps) + 3}.[/dim] Write [cyan]{manifest.cloud}/config.env[/cyan] (project, region, domain)",
         ]
         if manifest.topology == "omni":
-            steps.append("[dim]10.[/dim] Recommit app repo to include ops/")
+            steps.append(f"[dim]{len(steps) + 1}.[/dim] Recommit app repo to include ops/")
         else:
-            steps.append(f"[dim]10.[/dim] git init ops repo in [bold]{ops_dest}[/bold]")
-
-    if manifest.mobile:
-        steps.append(f"[dim]{len(steps) + 1}.[/dim] Clone mobile template")
+            steps.append(f"[dim]{len(steps) + 1}.[/dim] git init ops repo in [bold]{ops_dest}[/bold]")
 
     for step in steps:
         console.print(f"  {step}")
@@ -289,6 +324,12 @@ def _generate(manifest: BoilerworksManifest, output_dir: Path) -> None:
         task = progress.add_task("Renaming paths…", total=None)
         rename_boilerworks_paths(project_dir, manifest.project)
         progress.remove_task(task)
+
+        # ── Addons: mobile app + marketing site (inside the app repo) ────────
+        if manifest.mobile:
+            _clone_and_render_addon(_MOBILE_REPO, manifest.project, project_dir / "mobile", "mobile", progress)
+        if manifest.web_presence:
+            _clone_and_render_addon(_SITE_REPO, manifest.project, project_dir / "site", "site", progress)
 
         # ── Ops (infra-as-code) ───────────────────────────────────────────────
         ops_dir: Path | None = None

@@ -1,5 +1,11 @@
 # Boilerworks Template Catalogue
 # 26 templates across Full / Micro / Edge sizes
+#
+# Reserved non-catalogue repos — used via manifest flags, NOT selectable entries
+# (test_registry asserts exactly 26 catalogue templates):
+#   ConflictHQ/boilerworks-opscode            — infrastructure repo (ops: true)
+#   ConflictHQ/boilerworks-react-native-expo  — mobile app addon (mobile: true → mobile/)
+# astro-site below doubles as the web_presence addon (web_presence: true → site/).
 
 # ─── Full Templates (15) ──────────────────────────────────────────────────────
 
