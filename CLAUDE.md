@@ -25,7 +25,7 @@ It is NOT a web application. It is a command-line tool built with Click, Questio
 
 ```
 boilerworks/         # Python package
-  __init__.py        # __version__ = "0.1.0"
+  __init__.py        # __version__ = "0.2.0"
   cli.py             # Click group: setup, init, bootstrap, list
   wizard.py          # Questionary prompts → boilerworks.yaml
   generator.py       # Clone → render → wire → git init

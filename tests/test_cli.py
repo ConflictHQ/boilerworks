@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from click.testing import CliRunner
 
+from boilerworks import __version__
 from boilerworks.cli import main
 
 
@@ -42,7 +43,7 @@ class TestHelpOutput:
         runner = CliRunner()
         result = runner.invoke(main, ["--version"])
         assert result.exit_code == 0
-        assert "0.1.0" in result.output
+        assert __version__ in result.output
 
 
 class TestListCommand:
