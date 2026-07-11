@@ -1,0 +1,108 @@
+[submodule "templates/astro-site"]
+	path = templates/astro-site
+	url = https://github.com/ConflictHQ/boilerworks-astro-site.git
+[submodule "templates/cherrypy-micro"]
+	path = templates/cherrypy-micro
+	url = https://github.com/ConflictHQ/boilerworks-cherrypy-micro.git
+[submodule "templates/django-htmx"]
+	path = templates/django-htmx
+	url = https://github.com/ConflictHQ/boilerworks-django-htmx.git
+[submodule "templates/django-internal"]
+	path = templates/django-internal
+	url = https://github.com/ConflictHQ/boilerworks-django-internal.git
+[submodule "templates/django-micro"]
+	path = templates/django-micro
+	url = https://github.com/ConflictHQ/boilerworks-django-micro.git
+[submodule "templates/django-nextjs"]
+	path = templates/django-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-django-nextjs.git
+[submodule "templates/fastapi-htmx"]
+	path = templates/fastapi-htmx
+	url = https://github.com/ConflictHQ/boilerworks-fastapi-htmx.git
+[submodule "templates/fastapi-micro"]
+	path = templates/fastapi-micro
+	url = https://github.com/ConflictHQ/boilerworks-fastapi-micro.git
+[submodule "templates/fastapi-nextjs"]
+	path = templates/fastapi-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-fastapi-nextjs.git
+[submodule "templates/go-htmx"]
+	path = templates/go-htmx
+	url = https://github.com/ConflictHQ/boilerworks-go-htmx.git
+[submodule "templates/go-micro"]
+	path = templates/go-micro
+	url = https://github.com/ConflictHQ/boilerworks-go-micro.git
+[submodule "templates/go-nextjs"]
+	path = templates/go-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-go-nextjs.git
+[submodule "templates/hono-micro"]
+	path = templates/hono-micro
+	url = https://github.com/ConflictHQ/boilerworks-hono-micro.git
+[submodule "templates/hugo-be"]
+	path = templates/hugo-be
+	url = https://github.com/ConflictHQ/boilerworks-hugo-be.git
+[submodule "templates/laravel-livewire"]
+	path = templates/laravel-livewire
+	url = https://github.com/ConflictHQ/boilerworks-laravel-livewire.git
+[submodule "templates/laravel-vue"]
+	path = templates/laravel-vue
+	url = https://github.com/ConflictHQ/boilerworks-laravel-vue.git
+[submodule "templates/mobile"]
+	path = templates/mobile
+	url = https://github.com/ConflictHQ/boilerworks-mobile.git
+[submodule "templates/mobile-e2e"]
+	path = templates/mobile-e2e
+	url = https://github.com/ConflictHQ/boilerworks-mobile-e2e.git
+[submodule "templates/nestjs-micro"]
+	path = templates/nestjs-micro
+	url = https://github.com/ConflictHQ/boilerworks-nestjs-micro.git
+[submodule "templates/nestjs-nextjs"]
+	path = templates/nestjs-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-nestjs-nextjs.git
+[submodule "templates/new-cms"]
+	path = templates/new-cms
+	url = https://github.com/ConflictHQ/boilerworks-new-cms.git
+[submodule "templates/nuxt-full"]
+	path = templates/nuxt-full
+	url = https://github.com/ConflictHQ/boilerworks-nuxt-full.git
+[submodule "templates/opscode"]
+	path = templates/opscode
+	url = https://github.com/ConflictHQ/boilerworks-opscode.git
+[submodule "templates/phoenix-liveview"]
+	path = templates/phoenix-liveview
+	url = https://github.com/ConflictHQ/boilerworks-phoenix-liveview.git
+[submodule "templates/rails-hotwire"]
+	path = templates/rails-hotwire
+	url = https://github.com/ConflictHQ/boilerworks-rails-hotwire.git
+[submodule "templates/rails-nextjs"]
+	path = templates/rails-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-rails-nextjs.git
+[submodule "templates/react-native-expo"]
+	path = templates/react-native-expo
+	url = https://github.com/ConflictHQ/boilerworks-react-native-expo.git
+[submodule "templates/remix-full"]
+	path = templates/remix-full
+	url = https://github.com/ConflictHQ/boilerworks-remix-full.git
+[submodule "templates/rust-micro"]
+	path = templates/rust-micro
+	url = https://github.com/ConflictHQ/boilerworks-rust-micro.git
+[submodule "templates/saleor-nextjs"]
+	path = templates/saleor-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-saleor-nextjs.git
+[submodule "templates/site"]
+	path = templates/site
+	url = https://github.com/ConflictHQ/boilerworks-site.git
+[submodule "templates/spring-angular"]
+	path = templates/spring-angular
+	url = https://github.com/ConflictHQ/boilerworks-spring-angular.git
+[submodule "templates/spring-nextjs"]
+	path = templates/spring-nextjs
+	url = https://github.com/ConflictHQ/boilerworks-spring-nextjs.git
+[submodule "templates/storybook"]
+	path = templates/storybook
+	url = https://github.com/ConflictHQ/boilerworks-storybook.git
+[submodule "templates/sveltekit-full"]
+	path = templates/sveltekit-full
+	url = https://github.com/ConflictHQ/boilerworks-sveltekit-full.git
+[submodule "templates/typeforms"]
+	path = templates/typeforms
+	url = https://github.com/ConflictHQ/boilerworks-typeforms.git
