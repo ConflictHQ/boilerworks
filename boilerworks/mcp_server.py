@@ -24,7 +24,9 @@ mcp = FastMCP(
 @mcp.tool()
 def list_templates(
     size: Annotated[str | None, "Filter by size: full | micro | edge"] = None,
-    language: Annotated[str | None, "Filter by language: python | typescript | ruby | php | java | go | elixir | rust | svelte"] = None,
+    language: Annotated[
+        str | None, "Filter by language: python | typescript | ruby | php | java | go | elixir | rust | svelte"
+    ] = None,
     status: Annotated[str | None, "Filter by status: done | building | planned"] = None,
 ) -> str:
     """List all available Boilerworks templates, optionally filtered."""
@@ -85,7 +87,10 @@ def search_templates(
     if not results:
         return f"No templates matched '{query}'."
 
-    rows = [{"name": t.name, "size": t.size, "backend": t.backend, "frontend": t.frontend, "best_for": t.best_for} for t in results]
+    rows = [
+        {"name": t.name, "size": t.size, "backend": t.backend, "frontend": t.frontend, "best_for": t.best_for}
+        for t in results
+    ]
     return json.dumps(rows, indent=2)
 
 

@@ -1,2 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Build
+dist/
+
+# Lint
+.ruff_cache/
+
+# IDE
 .idea/
-backend/backend.iml
+*.iml
+
+# OS
+.DS_Store
