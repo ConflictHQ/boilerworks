@@ -37,25 +37,27 @@ boilerworks init --output /path    # write to specific directory
 
 ## Template catalogue
 
+<!-- Generated from boilerworks/data/templates.yaml by scripts/gen_skill_catalogue.py — do not edit by hand. -->
+
 ### Full templates — apps with users, org management, session auth
 
 | Template | Backend | Frontend |
 |---|---|---|
-| django-nextjs | Django 5 + Strawberry GraphQL | Next.js 16 |
+| django-nextjs | Django 5 | Next.js 16 |
 | nestjs-nextjs | NestJS 11 | Next.js 16 |
-| rails-hotwire | Rails 8 | Hotwire + Tailwind |
+| rails-hotwire | Rails 8 | Hotwire (Turbo + Stimulus) |
 | rails-nextjs | Rails 8 | Next.js 16 |
 | spring-angular | Spring Boot 3 | Angular 19 |
 | go-nextjs | Go + Chi | Next.js 16 |
 | phoenix-liveview | Phoenix 1.7 | LiveView |
 | laravel-vue | Laravel 12 | Inertia + Vue 3 |
 | django-htmx | Django 5 | HTMX + Alpine.js |
+| saleor-nextjs | Saleor (Django) | Next.js 16 |
 | fastapi-nextjs | FastAPI | Next.js 16 |
+| go-htmx | Go + Chi | HTMX + Templ |
 | spring-nextjs | Spring Boot 3 | Next.js 16 |
 | laravel-livewire | Laravel 12 | Livewire 3 |
-| go-htmx | Go + Chi | HTMX + Templ |
 | fastapi-htmx | FastAPI | HTMX + Alpine.js |
-| saleor-nextjs | Saleor (Django) | Next.js 16 |
 
 ### Micro templates — API services with API-key auth
 
@@ -72,10 +74,10 @@ boilerworks init --output /path    # write to specific directory
 
 | Template | Framework |
 |---|---|
+| hono-micro | Hono |
 | sveltekit-full | SvelteKit |
-| remix-full | Remix |
-| hono-micro | Hono (Cloudflare Workers) |
 | nuxt-full | Nuxt 4 |
+| remix-full | Remix |
 | astro-site | Astro |
 
 ## boilerworks.yaml reference

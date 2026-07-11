@@ -34,8 +34,13 @@ boilerworks/         # Python package
   registry.py        # Load + query templates.yaml
   renderer.py        # String replacement in cloned files
   console.py         # Rich output helpers
-data/
-  templates.yaml     # All 26 templates with metadata
+  mcp_server.py      # MCP server exposing the CLI as agent tools
+  data/
+    templates.yaml   # All 26 templates with metadata
+skill/
+  skill.md           # Claude Code skill (catalogue section is generated)
+scripts/
+  gen_skill_catalogue.py  # regenerates the skill.md catalogue from templates.yaml
 tests/
   conftest.py
   test_cli.py
@@ -59,8 +64,27 @@ make format                 # ruff fix + format
 
 ## Adding a template
 
-Edit `data/templates.yaml`. Add an entry following the existing schema.
-Run `make test` — `test_registry.py` will catch count mismatches.
+Edit `boilerworks/data/templates.yaml`. Add an entry following the existing schema.
+Regenerate the skill catalogue: `uv run python scripts/gen_skill_catalogue.py`.
+Run `make test` — `test_registry.py` catches count mismatches and
+`test_skill_catalogue.py` catches skill.md drift.
+
+## MCP server
+
+`boilerworks/mcp_server.py` exposes the CLI as MCP tools (`list_templates`,
+`get_template`, `search_templates`, `create_manifest`, `validate_manifest`,
+`dry_run`, `init_project`). The `mcp` dependency is an optional extra:
+
+```bash
+pip install 'boilerworks[mcp]'   # or: uv sync --extra mcp
+boilerworks-mcp                  # entry point defined in pyproject.toml
+```
+
+## Claude Code skill
+
+`skill/skill.md` teaches an agent the catalogue and workflow. Its
+"Template catalogue" section is generated from `boilerworks/data/templates.yaml`
+by `scripts/gen_skill_catalogue.py` — never edit those tables by hand.
 
 ## Coding standards
 
@@ -79,4 +103,4 @@ Run `make test` — `test_registry.py` will catch count mismatches.
 
 **Adding a renderer rule**: edit `boilerworks/renderer.py` (`build_replacements` or `_SKIP_*`)
 
-**Adding a template to the catalogue**: edit `data/templates.yaml`
+**Adding a template to the catalogue**: edit `boilerworks/data/templates.yaml`, then run `uv run python scripts/gen_skill_catalogue.py`

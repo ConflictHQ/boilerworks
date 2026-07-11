@@ -159,6 +159,31 @@ See [`boilerworks.yaml.example`](boilerworks.yaml.example) for a fully annotated
 
 ---
 
+## MCP Server
+
+Boilerworks ships an MCP server so AI agents can browse the catalogue, build manifests, and scaffold projects as tools. The `mcp` dependency is an optional extra:
+
+```bash
+pip install 'boilerworks[mcp]'
+boilerworks-mcp                 # stdio MCP server
+```
+
+Register it with Claude Code:
+
+```bash
+claude mcp add boilerworks -- boilerworks-mcp
+```
+
+Tools exposed: `list_templates`, `get_template`, `search_templates`, `create_manifest`, `validate_manifest`, `dry_run`, `init_project`.
+
+---
+
+## Claude Code Skill
+
+[`skill/skill.md`](skill/skill.md) is a Claude Code skill that teaches an agent the template catalogue, the `boilerworks.yaml` schema, and the conventions inside generated projects. Its catalogue tables are generated from `boilerworks/data/templates.yaml` by `scripts/gen_skill_catalogue.py`, and a test keeps them in sync.
+
+---
+
 ## What Every Template Includes
 
 Every Boilerworks Full template ships with:

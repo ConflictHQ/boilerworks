@@ -113,7 +113,7 @@ Get `boilerworks --help` working.
 
 Make `boilerworks list` show all 26 templates in a Rich table.
 
-1. Create `data/templates.yaml` with ALL 26 templates. Each entry:
+1. Create `boilerworks/data/templates.yaml` with ALL 26 templates. Each entry:
    ```yaml
    - name: django-nextjs
      repo: ConflictHQ/boilerworks-django-nextjs

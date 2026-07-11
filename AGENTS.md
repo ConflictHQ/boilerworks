@@ -8,7 +8,7 @@ This file is for Cursor, Windsurf, and generic AI coding agents.
 
 - This is the `boilerworks` Python CLI package, not a web app
 - Entry point: `boilerworks/cli.py` → `main()` Click group
-- Template data: `data/templates.yaml` (26 templates)
+- Template data: `boilerworks/data/templates.yaml` (26 templates)
 - Manifest model: `boilerworks/manifest.py` → `BoilerworksManifest`
 - Registry: `boilerworks/registry.py` → `Registry`
 - Renderer: `boilerworks/renderer.py` → `render_directory`, `build_replacements`
