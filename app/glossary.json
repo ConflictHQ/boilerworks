@@ -1,0 +1,42 @@
+{
+ "$comment": "Boilerworks ecosystem terms. Federated into app/brain.json by scripts/gen-brain.py (glossary adapter).",
+ "terms": [
+  {
+   "term": "Template",
+   "definition": "A production-ready starter repo (ConflictHQ/boilerworks-*) the CLI clones and renders into a new project. The catalogue of selectable templates lives in boilerworks/data/templates.yaml; each is pinned as a submodule under templates/.",
+   "related": ["Size class", "Primer"]
+  },
+  {
+   "term": "Size class",
+   "definition": "A template's weight class: full (complete application platform with user auth and Docker Compose), micro (lightweight API-key service), or edge (Cloudflare-first, serverless).",
+   "aliases": ["full", "micro", "edge"]
+  },
+  {
+   "term": "Topology",
+   "definition": "How a generated project's repos are arranged: standard (one app repo + optional ops repo), omni (everything in one repo), or api-only (backend without the frontend).",
+   "related": ["Template"]
+  },
+  {
+   "term": "Primer",
+   "definition": "The per-stack conventions document (primers/<template>/PRIMER.md) teaching an agent or developer the stack, architecture, and standards of one template. Root primers (PROCESS.md, CATALOGUE.md) hold the cross-stack process and catalogue rationale.",
+   "related": ["Template"]
+  },
+  {
+   "term": "Metarepo",
+   "definition": "A repo that folds a family of repos in as pinned git submodules to give one control surface — bootstrap, sync, status, and push-ordering across the whole set. This repo is the boilerworks metarepo (templates/ holds the submodules).",
+   "related": ["Brain node"]
+  },
+  {
+   "term": "Brain node",
+   "definition": "A repo that compiles its structured sources (app/*.json) into a queryable property graph at app/brain.json via scripts/gen-brain.py. A parent aggregator federates the node at a pinned SHA, namespacing its ids.",
+   "aliases": ["brain", "sub-brain"],
+   "related": ["Metarepo", "Knowledge graph"]
+  },
+  {
+   "term": "Knowledge graph",
+   "definition": "app/knowledge_graph.json — the conflict-kg/v1 projection of the template catalogue (templates, languages, size classes and their relations), generated from templates.yaml by scripts/gen-template-kg.py.",
+   "aliases": ["KG"],
+   "related": ["Brain node"]
+  }
+ ]
+}

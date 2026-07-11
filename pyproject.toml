@@ -49,6 +49,7 @@ include = ["boilerworks/", "tests/"]
 
 [dependency-groups]
 dev = [
+    "jsonschema>=4.26.0",
     "pytest>=8.0",
     "pytest-cov>=5.0",
     "ruff>=0.9",

@@ -1,0 +1,24 @@
+{
+ "$comment": "Standing decisions for the boilerworks ecosystem. Federated into app/brain.json by scripts/gen-brain.py (decisions adapter). Each item: { title (required), decision, date, labels:[] }.",
+ "count": 3,
+ "decisions": [
+  {
+   "title": "CLI repo doubles as metarepo and federated brain node",
+   "decision": "ConflictHQ/boilerworks stays the published CLI package AND becomes the boilerworks metarepo (every boilerworks-* template repo pinned as a git submodule under templates/, primers/ folded in as their canonical home) AND the federated brain node for the ecosystem (project-brain engine in scripts/, sources in app/, consumable by a parent aggregator at a pinned SHA). One repo, one control surface.",
+   "date": "2026-07-11",
+   "labels": ["architecture", "metarepo", "brain"]
+  },
+  {
+   "title": "Single-source the catalogues from templates.yaml",
+   "decision": "boilerworks/data/templates.yaml is the only machine-readable registry of templates. Every other catalogue rendering — the skill.md template catalogue (scripts/gen_skill_catalogue.py) and the knowledge graph (scripts/gen-template-kg.py) — is generated from it and never hand-edited; tests catch drift.",
+   "date": "2026-07-11",
+   "labels": ["single-sourcing", "catalogue"]
+  },
+  {
+   "title": "Release 0.2.0",
+   "decision": "Ship 0.2.0: MCP server exposing the CLI as agent tools, mobile and web_presence manifest flags wired into generation, dependency bumps past known CVEs, doc drift fixed. Published to PyPI via the v* tag workflow.",
+   "date": "2026-07-11",
+   "labels": ["release"]
+  }
+ ]
+}

@@ -22,3 +22,8 @@ dist/
 
 # OS
 .DS_Store
+
+# Brain (derived query stores — app/brain.json is the tracked artifact)
+app/brain.db
+app/brain.db-wal
+app/brain.db-shm

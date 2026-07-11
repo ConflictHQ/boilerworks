@@ -1,0 +1,1115 @@
+{
+ "meta": {
+  "version": "1",
+  "generator": "gen-brain",
+  "counts": {
+   "nodes": 49,
+   "edges": 59
+  }
+ },
+ "nodes": [
+  {
+   "id": "decision:cli-repo-doubles-as-metarepo-and-federated-brain-node",
+   "kind": "Decision",
+   "title": "CLI repo doubles as metarepo and federated brain node",
+   "text": "ConflictHQ/boilerworks stays the published CLI package AND becomes the boilerworks metarepo (every boilerworks-* template repo pinned as a git submodule under templates/, primers/ folded in as their canonical home) AND the federated brain node for the ecosystem (project-brain engine in scripts/, sources in app/, consumable by a parent aggregator at a pinned SHA). One repo, one control surface.",
+   "source": "app/decisions.json",
+   "durability": "durable-logic",
+   "labels": [
+    "architecture",
+    "metarepo",
+    "brain"
+   ],
+   "data": {
+    "date": "2026-07-11"
+   }
+  },
+  {
+   "id": "decision:release-0-2-0",
+   "kind": "Decision",
+   "title": "Release 0.2.0",
+   "text": "Ship 0.2.0: MCP server exposing the CLI as agent tools, mobile and web_presence manifest flags wired into generation, dependency bumps past known CVEs, doc drift fixed. Published to PyPI via the v* tag workflow.",
+   "source": "app/decisions.json",
+   "durability": "durable-logic",
+   "labels": [
+    "release"
+   ],
+   "data": {
+    "date": "2026-07-11"
+   }
+  },
+  {
+   "id": "decision:single-source-the-catalogues-from-templates-yaml",
+   "kind": "Decision",
+   "title": "Single-source the catalogues from templates.yaml",
+   "text": "boilerworks/data/templates.yaml is the only machine-readable registry of templates. Every other catalogue rendering \u2014 the skill.md template catalogue (scripts/gen_skill_catalogue.py) and the knowledge graph (scripts/gen-template-kg.py) \u2014 is generated from it and never hand-edited; tests catch drift.",
+   "source": "app/decisions.json",
+   "durability": "durable-logic",
+   "labels": [
+    "single-sourcing",
+    "catalogue"
+   ],
+   "data": {
+    "date": "2026-07-11"
+   }
+  },
+  {
+   "id": "kg:concept:shared-nextjs-frontend",
+   "kind": "Concept",
+   "title": "Shared Next.js frontend",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "descriptions": [
+     "The single Next.js frontend shared by every *-nextjs template (primers/NEXTJS_FRONTEND.md)."
+    ],
+    "subkind": "kg",
+    "kg_type": "concept"
+   }
+  },
+  {
+   "id": "kg:language:elixir",
+   "kind": "Concept",
+   "title": "elixir",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:go",
+   "kind": "Concept",
+   "title": "go",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:java",
+   "kind": "Concept",
+   "title": "java",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:php",
+   "kind": "Concept",
+   "title": "php",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:python",
+   "kind": "Concept",
+   "title": "python",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:ruby",
+   "kind": "Concept",
+   "title": "ruby",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:rust",
+   "kind": "Concept",
+   "title": "rust",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:svelte",
+   "kind": "Concept",
+   "title": "svelte",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:language:typescript",
+   "kind": "Concept",
+   "title": "typescript",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "language"
+   }
+  },
+  {
+   "id": "kg:size:edge",
+   "kind": "Concept",
+   "title": "Edge (Cloudflare-first)",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "size-class"
+   }
+  },
+  {
+   "id": "kg:size:full",
+   "kind": "Concept",
+   "title": "Full (complete application platform)",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "size-class"
+   }
+  },
+  {
+   "id": "kg:size:micro",
+   "kind": "Concept",
+   "title": "Micro (lightweight service)",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "subkind": "kg",
+    "kg_type": "size-class"
+   }
+  },
+  {
+   "id": "kg:template:astro-site",
+   "kind": "Concept",
+   "title": "astro-site",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "typescript",
+    "repo": "ConflictHQ/boilerworks-astro-site",
+    "status": "done",
+    "backend": "Astro",
+    "frontend": "Islands (multi-framework)",
+    "best_for": "Content-heavy sites, blogs, docs, and marketing pages",
+    "descriptions": [
+     "Content sites, blogs, docs, marketing"
+    ],
+    "subkind": "kg",
+    "kg_type": "edge"
+   }
+  },
+  {
+   "id": "kg:template:cherrypy-micro",
+   "kind": "Concept",
+   "title": "cherrypy-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-cherrypy-micro",
+    "status": "done",
+    "backend": "CherryPy",
+    "best_for": "Minimal Python services without framework overhead",
+    "descriptions": [
+     "Pure Python microservice, no WSGI overhead"
+    ],
+    "subkind": "kg",
+    "kg_type": "micro"
+   }
+  },
+  {
+   "id": "kg:template:django-htmx",
+   "kind": "Concept",
+   "title": "django-htmx",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-django-htmx",
+    "status": "done",
+    "backend": "Django 5",
+    "frontend": "HTMX + Alpine.js",
+    "best_for": "Django teams preferring server-rendered HTML over SPAs",
+    "descriptions": [
+     "Server-rendered CRUD, content-heavy, less JS"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:django-micro",
+   "kind": "Concept",
+   "title": "django-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-django-micro",
+    "status": "done",
+    "backend": "Django 5 (DRF/Ninja)",
+    "best_for": "Python microservices with Django's ORM and admin",
+    "descriptions": [
+     "API-only Python service"
+    ],
+    "subkind": "kg",
+    "kg_type": "micro"
+   }
+  },
+  {
+   "id": "kg:template:django-nextjs",
+   "kind": "Concept",
+   "title": "django-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-django-nextjs",
+    "status": "done",
+    "backend": "Django 5",
+    "frontend": "Next.js 16",
+    "best_for": "Python teams wanting batteries-included backend with rich SPA frontend",
+    "descriptions": [
+     "Data-heavy backends, admin-rich, rapid prototyping"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:fastapi-htmx",
+   "kind": "Concept",
+   "title": "fastapi-htmx",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-fastapi-htmx",
+    "status": "done",
+    "backend": "FastAPI",
+    "frontend": "HTMX + Alpine.js",
+    "best_for": "FastAPI teams preferring server-rendered HTML",
+    "descriptions": [
+     "Lightweight Python, server-rendered"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:fastapi-micro",
+   "kind": "Concept",
+   "title": "fastapi-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-fastapi-micro",
+    "status": "done",
+    "backend": "FastAPI",
+    "best_for": "High-performance async Python microservices",
+    "descriptions": [
+     "Lightweight async Python API"
+    ],
+    "subkind": "kg",
+    "kg_type": "micro"
+   }
+  },
+  {
+   "id": "kg:template:fastapi-nextjs",
+   "kind": "Concept",
+   "title": "fastapi-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-fastapi-nextjs",
+    "status": "done",
+    "backend": "FastAPI",
+    "frontend": "Next.js 16",
+    "best_for": "Python teams wanting async-first API with rich SPA frontend",
+    "descriptions": [
+     "Modern Python API, async-first"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:go-htmx",
+   "kind": "Concept",
+   "title": "go-htmx",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "go",
+    "repo": "ConflictHQ/boilerworks-go-htmx",
+    "status": "done",
+    "backend": "Go + Chi",
+    "frontend": "HTMX + Templ",
+    "best_for": "Go teams wanting lightweight server-rendered apps",
+    "descriptions": [
+     "Lightweight, performance-critical"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:go-micro",
+   "kind": "Concept",
+   "title": "go-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "go",
+    "repo": "ConflictHQ/boilerworks-go-micro",
+    "status": "done",
+    "backend": "Go + Chi",
+    "best_for": "High-throughput Go microservices",
+    "descriptions": [
+     "Lightweight Go service"
+    ],
+    "subkind": "kg",
+    "kg_type": "micro"
+   }
+  },
+  {
+   "id": "kg:template:go-nextjs",
+   "kind": "Concept",
+   "title": "go-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "go",
+    "repo": "ConflictHQ/boilerworks-go-nextjs",
+    "status": "done",
+    "backend": "Go + Chi",
+    "frontend": "Next.js 16",
+    "best_for": "Go teams wanting an API-first approach with rich SPA",
+    "descriptions": [
+     "API-first Go, rich frontend"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:hono-micro",
+   "kind": "Concept",
+   "title": "hono-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "typescript",
+    "repo": "ConflictHQ/boilerworks-hono-micro",
+    "status": "done",
+    "backend": "Hono",
+    "best_for": "Ultra-fast edge APIs on Cloudflare Workers",
+    "descriptions": [
+     "Edge API, Cloudflare Workers"
+    ],
+    "subkind": "kg",
+    "kg_type": "edge"
+   }
+  },
+  {
+   "id": "kg:template:laravel-livewire",
+   "kind": "Concept",
+   "title": "laravel-livewire",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "php",
+    "repo": "ConflictHQ/boilerworks-laravel-livewire",
+    "status": "done",
+    "backend": "Laravel 12",
+    "frontend": "Livewire 3",
+    "best_for": "PHP teams wanting server-rendered reactivity without JS",
+    "descriptions": [
+     "Server-rendered reactive PHP"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:laravel-vue",
+   "kind": "Concept",
+   "title": "laravel-vue",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "php",
+    "repo": "ConflictHQ/boilerworks-laravel-vue",
+    "status": "done",
+    "backend": "Laravel 12",
+    "frontend": "Inertia + Vue 3",
+    "best_for": "PHP teams wanting SPA feel without an API layer",
+    "descriptions": [
+     "Laravel ecosystem, SPA-like experience"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:nestjs-micro",
+   "kind": "Concept",
+   "title": "nestjs-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "typescript",
+    "repo": "ConflictHQ/boilerworks-nestjs-micro",
+    "status": "done",
+    "backend": "NestJS 11",
+    "best_for": "TypeScript microservices with NestJS DI and modules",
+    "descriptions": [
+     "API-only TypeScript service"
+    ],
+    "subkind": "kg",
+    "kg_type": "micro"
+   }
+  },
+  {
+   "id": "kg:template:nestjs-nextjs",
+   "kind": "Concept",
+   "title": "nestjs-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "typescript",
+    "repo": "ConflictHQ/boilerworks-nestjs-nextjs",
+    "status": "done",
+    "backend": "NestJS 11",
+    "frontend": "Next.js 16",
+    "best_for": "TypeScript-first teams building enterprise applications",
+    "descriptions": [
+     "Full TypeScript, enterprise-ish"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:nuxt-full",
+   "kind": "Concept",
+   "title": "nuxt-full",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "typescript",
+    "repo": "ConflictHQ/boilerworks-nuxt-full",
+    "status": "done",
+    "backend": "Nuxt 4",
+    "frontend": "Vue (built-in)",
+    "best_for": "Vue teams building full-stack edge apps",
+    "descriptions": [
+     "Full-stack edge app, Vue ecosystem"
+    ],
+    "subkind": "kg",
+    "kg_type": "edge"
+   }
+  },
+  {
+   "id": "kg:template:phoenix-liveview",
+   "kind": "Concept",
+   "title": "phoenix-liveview",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "elixir",
+    "repo": "ConflictHQ/boilerworks-phoenix-liveview",
+    "status": "done",
+    "backend": "Phoenix 1.7",
+    "frontend": "LiveView",
+    "best_for": "Elixir teams building real-time collaborative apps",
+    "descriptions": [
+     "Real-time, collaborative"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:rails-hotwire",
+   "kind": "Concept",
+   "title": "rails-hotwire",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "ruby",
+    "repo": "ConflictHQ/boilerworks-rails-hotwire",
+    "status": "done",
+    "backend": "Rails 8",
+    "frontend": "Hotwire (Turbo + Stimulus)",
+    "best_for": "Ruby teams wanting Rails-native reactive UI",
+    "descriptions": [
+     "Marketplace, social, content, CMS"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:rails-nextjs",
+   "kind": "Concept",
+   "title": "rails-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "ruby",
+    "repo": "ConflictHQ/boilerworks-rails-nextjs",
+    "status": "done",
+    "backend": "Rails 8",
+    "frontend": "Next.js 16",
+    "best_for": "Ruby teams whose frontend needs exceed Hotwire",
+    "descriptions": [
+     "Rails backend, richer frontend than Hotwire"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:remix-full",
+   "kind": "Concept",
+   "title": "remix-full",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "typescript",
+    "repo": "ConflictHQ/boilerworks-remix-full",
+    "status": "done",
+    "backend": "Remix",
+    "frontend": "React (built-in)",
+    "best_for": "React teams building server-first edge apps",
+    "descriptions": [
+     "Server-first React at the edge"
+    ],
+    "subkind": "kg",
+    "kg_type": "edge"
+   }
+  },
+  {
+   "id": "kg:template:rust-micro",
+   "kind": "Concept",
+   "title": "rust-micro",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "rust",
+    "repo": "ConflictHQ/boilerworks-rust-micro",
+    "status": "done",
+    "backend": "Axum (Rust)",
+    "best_for": "Maximum performance microservices in Rust",
+    "descriptions": [
+     "High-performance Rust microservice"
+    ],
+    "subkind": "kg",
+    "kg_type": "micro"
+   }
+  },
+  {
+   "id": "kg:template:saleor-nextjs",
+   "kind": "Concept",
+   "title": "saleor-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-saleor-nextjs",
+    "status": "done",
+    "backend": "Saleor (Django)",
+    "frontend": "Next.js 16",
+    "best_for": "Teams building e-commerce storefronts",
+    "descriptions": [
+     "E-commerce with headless commerce platform"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:spring-angular",
+   "kind": "Concept",
+   "title": "spring-angular",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "java",
+    "repo": "ConflictHQ/boilerworks-spring-angular",
+    "status": "done",
+    "backend": "Spring Boot 3",
+    "frontend": "Angular 19",
+    "best_for": "Java teams in enterprise, banking, or fintech",
+    "descriptions": [
+     "Enterprise, banking, fintech"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:spring-nextjs",
+   "kind": "Concept",
+   "title": "spring-nextjs",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "java",
+    "repo": "ConflictHQ/boilerworks-spring-nextjs",
+    "status": "done",
+    "backend": "Spring Boot 3",
+    "frontend": "Next.js 16",
+    "best_for": "Java teams preferring React over Angular",
+    "descriptions": [
+     "Modern enterprise, non-Angular"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:sveltekit-full",
+   "kind": "Concept",
+   "title": "sveltekit-full",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "svelte",
+    "repo": "ConflictHQ/boilerworks-sveltekit-full",
+    "status": "done",
+    "backend": "SvelteKit",
+    "frontend": "Svelte (built-in)",
+    "best_for": "Svelte teams building full-stack edge apps",
+    "descriptions": [
+     "Full-stack edge app, simplest DX"
+    ],
+    "subkind": "kg",
+    "kg_type": "edge"
+   }
+  },
+  {
+   "id": "term:brain-node",
+   "kind": "Term",
+   "title": "Brain node",
+   "text": "A repo that compiles its structured sources (app/*.json) into a queryable property graph at app/brain.json via scripts/gen-brain.py. A parent aggregator federates the node at a pinned SHA, namespacing its ids.",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "aliases": [
+     "brain",
+     "sub-brain"
+    ],
+    "related": [
+     "Metarepo",
+     "Knowledge graph"
+    ]
+   }
+  },
+  {
+   "id": "term:knowledge-graph",
+   "kind": "Term",
+   "title": "Knowledge graph",
+   "text": "app/knowledge_graph.json \u2014 the conflict-kg/v1 projection of the template catalogue (templates, languages, size classes and their relations), generated from templates.yaml by scripts/gen-template-kg.py.",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "aliases": [
+     "KG"
+    ],
+    "related": [
+     "Brain node"
+    ]
+   }
+  },
+  {
+   "id": "term:metarepo",
+   "kind": "Term",
+   "title": "Metarepo",
+   "text": "A repo that folds a family of repos in as pinned git submodules to give one control surface \u2014 bootstrap, sync, status, and push-ordering across the whole set. This repo is the boilerworks metarepo (templates/ holds the submodules).",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "related": [
+     "Brain node"
+    ]
+   }
+  },
+  {
+   "id": "term:primer",
+   "kind": "Term",
+   "title": "Primer",
+   "text": "The per-stack conventions document (primers/<template>/PRIMER.md) teaching an agent or developer the stack, architecture, and standards of one template. Root primers (PROCESS.md, CATALOGUE.md) hold the cross-stack process and catalogue rationale.",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "related": [
+     "Template"
+    ]
+   }
+  },
+  {
+   "id": "term:size-class",
+   "kind": "Term",
+   "title": "Size class",
+   "text": "A template's weight class: full (complete application platform with user auth and Docker Compose), micro (lightweight API-key service), or edge (Cloudflare-first, serverless).",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "aliases": [
+     "full",
+     "micro",
+     "edge"
+    ]
+   }
+  },
+  {
+   "id": "term:template",
+   "kind": "Term",
+   "title": "Template",
+   "text": "A production-ready starter repo (ConflictHQ/boilerworks-*) the CLI clones and renders into a new project. The catalogue of selectable templates lives in boilerworks/data/templates.yaml; each is pinned as a submodule under templates/.",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "related": [
+     "Size class",
+     "Primer"
+    ]
+   }
+  },
+  {
+   "id": "term:topology",
+   "kind": "Term",
+   "title": "Topology",
+   "text": "How a generated project's repos are arranged: standard (one app repo + optional ops repo), omni (everything in one repo), or api-only (backend without the frontend).",
+   "source": "app/glossary.json",
+   "durability": "durable-logic",
+   "data": {
+    "related": [
+     "Template"
+    ]
+   }
+  }
+ ],
+ "edges": [
+  {
+   "source": "kg:template:astro-site",
+   "target": "kg:language:typescript",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:astro-site",
+   "target": "kg:size:edge",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:cherrypy-micro",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:cherrypy-micro",
+   "target": "kg:size:micro",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:django-htmx",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:django-htmx",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:django-micro",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:django-micro",
+   "target": "kg:size:micro",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:django-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:django-nextjs",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:django-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:fastapi-htmx",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:fastapi-htmx",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:fastapi-micro",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:fastapi-micro",
+   "target": "kg:size:micro",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:fastapi-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:fastapi-nextjs",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:fastapi-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:go-htmx",
+   "target": "kg:language:go",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:go-htmx",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:go-micro",
+   "target": "kg:language:go",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:go-micro",
+   "target": "kg:size:micro",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:go-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:go-nextjs",
+   "target": "kg:language:go",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:go-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:hono-micro",
+   "target": "kg:language:typescript",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:hono-micro",
+   "target": "kg:size:edge",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:laravel-livewire",
+   "target": "kg:language:php",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:laravel-livewire",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:laravel-vue",
+   "target": "kg:language:php",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:laravel-vue",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:nestjs-micro",
+   "target": "kg:language:typescript",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:nestjs-micro",
+   "target": "kg:size:micro",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:nestjs-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:nestjs-nextjs",
+   "target": "kg:language:typescript",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:nestjs-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:nuxt-full",
+   "target": "kg:language:typescript",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:nuxt-full",
+   "target": "kg:size:edge",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:phoenix-liveview",
+   "target": "kg:language:elixir",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:phoenix-liveview",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:rails-hotwire",
+   "target": "kg:language:ruby",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:rails-hotwire",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:rails-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:rails-nextjs",
+   "target": "kg:language:ruby",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:rails-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:remix-full",
+   "target": "kg:language:typescript",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:remix-full",
+   "target": "kg:size:edge",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:rust-micro",
+   "target": "kg:language:rust",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:rust-micro",
+   "target": "kg:size:micro",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:saleor-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:saleor-nextjs",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:saleor-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:spring-angular",
+   "target": "kg:language:java",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:spring-angular",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:spring-nextjs",
+   "target": "kg:concept:shared-nextjs-frontend",
+   "rel": "uses"
+  },
+  {
+   "source": "kg:template:spring-nextjs",
+   "target": "kg:language:java",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:spring-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:sveltekit-full",
+   "target": "kg:language:svelte",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:sveltekit-full",
+   "target": "kg:size:edge",
+   "rel": "sized"
+  }
+ ]
+}
