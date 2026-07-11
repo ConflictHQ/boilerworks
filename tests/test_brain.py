@@ -97,3 +97,43 @@ def test_brain_validates_against_schemas(generated):
 def test_check_brain_gate_passes(generated):
     proc = _run("check-brain.py")
     assert proc.returncode == 0, f"check-brain failed: {proc.stdout}{proc.stderr}"
+
+
+def test_aggregate_include_self(generated, tmp_path):
+    """Master-brain mode: --include-self folds this repo's own brain in
+    verbatim (bare ids, no anchor) alongside a namespaced sub-brain."""
+    sub = tmp_path / "fake-template"
+    (sub / "app").mkdir(parents=True)
+    (sub / "app" / "brain.json").write_text(
+        json.dumps(
+            {
+                "meta": {"version": "1", "generator": "gen-brain", "counts": {"nodes": 1, "edges": 0}},
+                "nodes": [{"id": "concept:widget", "kind": "Concept", "title": "Widget", "derived": True}],
+                "edges": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+    out = tmp_path / "federated.json"
+    proc = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPTS / "aggregate-brains.py"),
+            str(sub),
+            "--include-self",
+            "--out",
+            str(out),
+        ],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+    assert proc.returncode == 0, proc.stderr
+    graph = json.loads(out.read_text(encoding="utf-8"))
+    ids = {n["id"] for n in graph["nodes"]}
+    own = json.loads(generated["brain"])
+    for n in own["nodes"][:5]:
+        assert n["id"] in ids, "own brain ids must stay bare"
+    assert "fake-template/concept:widget" in ids
+    assert "repo:fake-template" in ids
+    assert not any(i.startswith("repo:") and i != "repo:fake-template" for i in ids)

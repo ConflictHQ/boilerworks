@@ -163,8 +163,8 @@ check-brain:  ## Validate app/brain.json (provenance, integrity, canonical order
 	uv run python scripts/check-brain.py
 
 .PHONY: aggregate-brain
-aggregate-brain:  ## Federate submodule sub-brains into app/brain.json (skips templates without app/brain.json; no-op when none exist).
-	uv run python scripts/aggregate-brains.py $(SUBMODULES)
+aggregate-brain: brain  ## Recompile own brain, then fold submodule sub-brains in (master-brain mode: own ids stay bare; skips templates without app/brain.json).
+	uv run python scripts/aggregate-brains.py --include-self $(SUBMODULES)
 
 .PHONY: migrate-brain
 migrate-brain:  ## Migrate app/brain.json to the current envelope version. BRAIN forwards a path.

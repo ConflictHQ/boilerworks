@@ -207,7 +207,7 @@ def _normalize_kg(graph):
     return {"nodes": graph.get("nodes") or [], "edges": edges}
 
 
-def aggregate(sources: list[tuple]) -> dict:
+def aggregate(sources: list[tuple], self_graph: dict | None = None) -> dict:
     """Merge namespaced sub-brains into one deterministic federated graph.
 
     `sources` is a list of (repo_namespace, sub_brain_graph[, source_path]) — the
@@ -216,9 +216,22 @@ def aggregate(sources: list[tuple]) -> dict:
     authoring off); a 2-tuple leaves the anchor sourceless. Empty -> a trivial
     empty graph. Mirrors gen-brain.py's merge exactly: nodes first-writer-wins by
     id then sorted; edges deduped by (source, target, rel) then sorted; integrity
-    preserved by dropping any edge whose endpoints are not both present."""
+    preserved by dropping any edge whose endpoints are not both present.
+
+    `self_graph` is the MASTER-BRAIN case (--include-self): the parent repo's own
+    compiled single-repo brain, folded in VERBATIM — ids un-namespaced, no
+    synthetic anchor, no in_repo edges — so the parent keeps its identity while
+    gaining the namespaced sub-graphs. Self is seeded first, so on an id
+    collision the parent's node wins (first-writer)."""
     nodes_by_id: dict[str, dict] = {}
     edges: list[dict] = []
+    if isinstance(self_graph, dict):
+        for n in self_graph.get("nodes") or []:
+            if isinstance(n, dict) and n.get("id"):
+                nodes_by_id.setdefault(str(n["id"]), dict(n))
+        for e in self_graph.get("edges") or []:
+            if isinstance(e, dict) and e.get("source") and e.get("target"):
+                edges.append(dict(e))
     for src in sources:
         repo, graph = src[0], src[1]
         source_path = src[2] if len(src) > 2 else None
@@ -320,12 +333,34 @@ def main():
         metavar="REPO=PATH",
         help="fold a code KG json in as another sub-brain source",
     )
+    ap.add_argument(
+        "--include-self",
+        action="store_true",
+        help="master-brain mode: fold the parent's own compiled brain "
+        "(app/brain.json, as last written by gen-brain.py — run `make brain` "
+        "first) in un-namespaced, so the parent keeps its own graph and gains "
+        "the sub-graphs",
+    )
     ap.add_argument("--out", default=OUT, help="output path (default app/brain.json)")
     args = ap.parse_args()
 
     submodules = _submodules_from_args(args)
     code_kg = _code_kg_from_args(args)
     sources = _collect(submodules, code_kg)
+
+    include_self = args.include_self
+    if not include_self:
+        try:
+            include_self = bool(settings.metabrain.get("include_self", False))
+        except AttributeError:
+            include_self = False
+    self_graph = _load(OUT) if include_self else None
+    if include_self and not isinstance(self_graph, dict):
+        print(
+            "aggregate-brains: --include-self set but app/brain.json is "
+            "missing/invalid — run `make brain` first; proceeding without self."
+        )
+        self_graph = None
 
     # Non-destructive guard: with no sub-brains (the standalone single-repo
     # template — SUBMODULES empty), there is nothing to federate. Do NOT write,
@@ -339,7 +374,7 @@ def main():
         )
         return 0
 
-    graph = aggregate(sources)
+    graph = aggregate(sources, self_graph=self_graph)
 
     out = args.out if os.path.isabs(args.out) else os.path.join(ROOT, args.out)
     os.makedirs(os.path.dirname(out), exist_ok=True)
