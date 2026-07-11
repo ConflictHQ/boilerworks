@@ -1,8 +1,10 @@
-# Agents — Boilerworks CLI
+# Agents — Boilerworks
 
 This file is for Cursor, Windsurf, and generic AI coding agents.
 
-**Read `CLAUDE.md` for the full stack summary and conventions.**
+**Read `bootstrap.md` first** — the canonical workspace conventions: CLI +
+metarepo (`templates/` submodules, push order) + brain node (`app/brain.json`).
+Then `CLAUDE.md` for the CLI stack summary.
 
 ## Quick orientation
 

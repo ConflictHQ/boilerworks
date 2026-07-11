@@ -1,6 +1,13 @@
-# Claude — Boilerworks CLI
+# Claude — Boilerworks
 
-Primary conventions doc: read this file, then the source code.
+Read [`bootstrap.md`](bootstrap.md) first — it is the canonical entry point for
+this workspace: the repo is the Boilerworks **CLI** + the template **metarepo**
+(submodules under `templates/`, primers under `primers/`) + a federated
+**brain node** (`app/brain.json`). Metarepo workflow, brain contract, push
+order, and the process mandate (`primers/PROCESS.md`) all live there. When this
+file and `bootstrap.md` conflict, `bootstrap.md` wins.
+
+The rest of this file covers the CLI package specifically.
 
 This repo is the **Boilerworks CLI** — a Python package published to PyPI as `boilerworks`.
 It is NOT a web application. It is a command-line tool built with Click, Questionary, and Rich.
