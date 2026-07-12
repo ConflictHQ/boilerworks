@@ -1,7 +1,7 @@
 # Boilerworks — workspace bootstrap
 
 Canonical entry point for conventions in this repo. Agent shims (`CLAUDE.md`,
-`AGENTS.md`) point here; when any document conflicts with this one, this one
+`AGENTS.md`, `CALLIOPE.md`) point here; when any document conflicts with this one, this one
 wins. The process mandate is [`primers/PROCESS.md`](primers/PROCESS.md) — read
 it before contributing.
 
