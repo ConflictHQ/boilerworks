@@ -321,7 +321,6 @@ Each Boilerworks project ships with shim files for multiple AI coding agents. Al
 ```
 CLAUDE.md       # Claude Code / Claude agent
 AGENTS.md       # Cursor, Windsurf, generic agents
-GEMINI.md       # Google Gemini agents
 bootstrap.md    # The actual conventions (all shims point here)
 ```
 
@@ -745,7 +744,7 @@ When starting a new project:
 
 4. **Delete example data.** Remove the example forms, workflows, and seed data. Keep the engines -- they're the infrastructure you're building on.
 
-5. **Set up agent shims.** Create CLAUDE.md, AGENTS.md, and GEMINI.md pointing to `bootstrap.md`. Copy the shim structure from the template.
+5. **Set up agent shims.** Create CLAUDE.md and AGENTS.md (plus CALLIOPE.md where the project uses it) pointing to `bootstrap.md`. Copy the shim structure from the template.
 
 6. **Set up memory.** Create the memory directory for persistent AI context. Initialize MEMORY.md with project-specific context.
 
