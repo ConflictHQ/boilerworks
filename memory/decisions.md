@@ -9,7 +9,7 @@ The `ConflictHQ/boilerworks` repo stays the published CLI package and
 additionally becomes:
 
 - **the boilerworks metarepo** — all 36 `boilerworks-*` template repos pinned
-  as git submodules under `templates/` (das-tech pattern: `bootstrap` / `pin` /
+  as git submodules under `templates/` (internal metarepo pattern: `bootstrap` / `pin` /
   `sync` / `all-status` / `all-push`, submodules pushed before the parent),
   with `primers/` folded in as the canonical home of the process and per-stack
   conventions docs;
