@@ -30,7 +30,7 @@ clean:
 # ----------------------------------------------------------------------------
 #
 # This repo is also the boilerworks METAREPO: every boilerworks-* template repo
-# is pinned as a git submodule under templates/. Conventions (das-tech pattern):
+# is pinned as a git submodule under templates/. Conventions (internal metarepo pattern):
 # - Aggregate targets iterate $(SUBMODULES); single-submodule targets take
 #   SUB=<short-name> (the templates/ directory basename).
 # - Eight submodules are PRIVATE repos (django-internal, hugo-be, mobile,
