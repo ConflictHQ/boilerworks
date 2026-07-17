@@ -11,7 +11,7 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP(
     "boilerworks",
     instructions=(
-        "Boilerworks provides 26 production-ready project templates structured for AI-assisted development. "
+        "Boilerworks provides 27 production-ready project templates structured for AI-assisted development. "
         "Use list_templates to explore options, create_manifest to build a boilerworks.yaml, "
         "and init_project to scaffold the project on disk."
     ),

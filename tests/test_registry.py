@@ -118,3 +118,10 @@ def test_names_returns_all_names(registry: Registry) -> None:
     assert len(names) == 27
     assert "django-nextjs" in names
     assert "astro-site" in names
+
+
+def test_github_url_is_derived_from_repo(registry: Registry) -> None:
+    t = registry.get_by_name("django-nextjs-copilotkit")
+    assert t is not None
+    assert t.repo == "ConflictHQ/boilerworks-django-nextjs-copilotkit"
+    assert t.github_url == "https://github.com/ConflictHQ/boilerworks-django-nextjs-copilotkit"

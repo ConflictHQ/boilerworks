@@ -73,6 +73,7 @@ def print_template_detail(template: TemplateInfo) -> None:
     lines = [
         f"[bold]Name:[/bold]       {template.name}",
         f"[bold]Repo:[/bold]       {template.repo}",
+        f"[bold]GitHub:[/bold]     {template.github_url}",
         f"[bold]Size:[/bold]       {template.size}",
         f"[bold]Language:[/bold]   {template.language}",
         f"[bold]Backend:[/bold]    {template.backend}",

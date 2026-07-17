@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+
 from click.testing import CliRunner
 
 from boilerworks import __version__
@@ -17,6 +19,7 @@ class TestHelpOutput:
         assert "init" in result.output
         assert "bootstrap" in result.output
         assert "list" in result.output
+        assert "info" in result.output
 
     def test_list_help(self) -> None:
         runner = CliRunner()
@@ -25,6 +28,7 @@ class TestHelpOutput:
         assert "--size" in result.output
         assert "--language" in result.output
         assert "--status" in result.output
+        assert "--json" in result.output
 
     def test_init_help(self) -> None:
         runner = CliRunner()
@@ -95,6 +99,60 @@ class TestListCommand:
         result = runner.invoke(main, ["list", "--size", "full", "--language", "rust"])
         assert result.exit_code == 0
         assert "No templates match" in result.output
+
+
+class TestListJsonOutput:
+    def test_json_is_valid_and_lists_all_27(self) -> None:
+        runner = CliRunner()
+        result = runner.invoke(main, ["list", "--json"])
+        assert result.exit_code == 0
+        rows = json.loads(result.output)
+        assert len(rows) == 27
+        names = {r["name"] for r in rows}
+        assert "django-nextjs-copilotkit" in names
+
+    def test_json_rows_carry_repo_and_github_url(self) -> None:
+        runner = CliRunner()
+        result = runner.invoke(main, ["list", "--json"])
+        rows = json.loads(result.output)
+        row = next(r for r in rows if r["name"] == "django-nextjs-copilotkit")
+        expected = {"name", "repo", "github_url", "size", "language", "backend", "frontend", "status", "best_for"}
+        assert expected <= set(row)
+        assert row["repo"] == "ConflictHQ/boilerworks-django-nextjs-copilotkit"
+        assert row["github_url"] == "https://github.com/ConflictHQ/boilerworks-django-nextjs-copilotkit"
+
+    def test_json_respects_filters(self) -> None:
+        runner = CliRunner()
+        result = runner.invoke(main, ["list", "--json", "--size", "micro"])
+        rows = json.loads(result.output)
+        assert rows
+        assert all(r["size"] == "micro" for r in rows)
+
+
+class TestInfoCommand:
+    def test_info_shows_details_and_github_url(self) -> None:
+        runner = CliRunner()
+        result = runner.invoke(main, ["info", "django-nextjs-copilotkit"])
+        assert result.exit_code == 0
+        assert "django-nextjs-copilotkit" in result.output
+        # The GitHub URL row is present (assert wrap-safe fragments, not the whole URL)
+        assert "github.com" in result.output
+        assert "ConflictHQ/boilerworks-django-nextjs-copilotkit" in result.output
+
+    def test_info_unknown_name_exits_nonzero_with_suggestion(self) -> None:
+        runner = CliRunner()
+        # "copilot" is a substring of a real template name → offered as a suggestion
+        result = runner.invoke(main, ["info", "copilot"])
+        assert result.exit_code == 1
+        assert "Unknown template" in result.output
+        assert "django-nextjs-copilotkit" in result.output
+
+    def test_info_no_match_points_to_list(self) -> None:
+        runner = CliRunner()
+        result = runner.invoke(main, ["info", "zzz-not-a-template"])
+        assert result.exit_code == 1
+        assert "Unknown template" in result.output
+        assert "boilerworks list" in result.output
 
 
 class TestBootstrapCommand:

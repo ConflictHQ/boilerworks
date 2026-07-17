@@ -69,6 +69,23 @@ class TestPrintTemplateDetail:
         assert "python" in output.lower()
         assert "Django" in output
 
+    def test_detail_includes_full_github_url(self) -> None:
+        # Use a wide console so the URL never wraps — asserts the exact rendered URL.
+        buf = StringIO()
+        cap = Console(file=buf, width=200, highlight=False, markup=True)
+        import boilerworks.console as _mod
+
+        original = _mod.console
+        _mod.console = cap
+        try:
+            template = Registry().get_by_name("django-nextjs-copilotkit")
+            assert template is not None
+            print_template_detail(template)
+        finally:
+            _mod.console = original
+        output = buf.getvalue()
+        assert "https://github.com/ConflictHQ/boilerworks-django-nextjs-copilotkit" in output
+
     def test_template_without_frontend(self) -> None:
         # Micro templates have no frontend
         t = TemplateInfo(

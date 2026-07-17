@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import shutil
+import subprocess
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -10,6 +11,7 @@ import pytest
 
 from boilerworks.generator import (
     _clone_and_render_ops,
+    _clone_repo,
     _dry_run_plan,
     _write_ops_config,
     generate_from_manifest,
@@ -80,6 +82,69 @@ class TestDryRun:
             mobile=True,
         )
         _dry_run_plan(manifest, tmp_path)
+
+
+class TestCloneRepo:
+    """_clone_repo tries SSH, falls back to HTTPS, and reports both errors on failure."""
+
+    @staticmethod
+    def _is_ssh(cmd: list[str]) -> bool:
+        return any("git@github.com" in part for part in cmd)
+
+    def test_ssh_success_skips_https(self, tmp_path: Path) -> None:
+        calls: list[list[str]] = []
+
+        def fake_run(cmd: list[str], capture_output: bool = False, text: bool = False, **_: object):
+            calls.append(cmd)
+            return subprocess.CompletedProcess(cmd, 0, "", "")
+
+        with patch("boilerworks.generator.subprocess.run", side_effect=fake_run):
+            _clone_repo("ConflictHQ/boilerworks-x", tmp_path / "dest")
+
+        assert len(calls) == 1  # HTTPS never attempted
+        assert self._is_ssh(calls[0])
+
+    def test_https_fallback_succeeds(self, tmp_path: Path) -> None:
+        def fake_run(cmd: list[str], capture_output: bool = False, text: bool = False, **_: object):
+            rc = 1 if self._is_ssh(cmd) else 0
+            return subprocess.CompletedProcess(cmd, rc, "", "ssh unavailable" if rc else "")
+
+        with patch("boilerworks.generator.subprocess.run", side_effect=fake_run):
+            _clone_repo("ConflictHQ/boilerworks-x", tmp_path / "dest")  # must not raise
+
+    def test_both_fail_reports_both_errors_and_network_hint(self, tmp_path: Path) -> None:
+        def fake_run(cmd: list[str], capture_output: bool = False, text: bool = False, **_: object):
+            err = "SSH_BOOM" if self._is_ssh(cmd) else "HTTPS_BOOM"
+            return subprocess.CompletedProcess(cmd, 128, "", err)
+
+        with (
+            patch("boilerworks.generator.subprocess.run", side_effect=fake_run),
+            pytest.raises(RuntimeError) as exc,
+        ):
+            _clone_repo("ConflictHQ/boilerworks-x", tmp_path / "dest")
+
+        msg = str(exc.value)
+        assert "SSH_BOOM" in msg  # SSH error surfaced
+        assert "HTTPS_BOOM" in msg  # HTTPS error surfaced, not mislabeled as SSH
+        assert "network access" in msg  # generic failure → network hint
+
+    def test_private_repo_failure_triggers_auth_hint(self, tmp_path: Path) -> None:
+        def fake_run(cmd: list[str], capture_output: bool = False, text: bool = False, **_: object):
+            if self._is_ssh(cmd):
+                err = "ERROR: Repository not found.\nfatal: Could not read from remote repository."
+            else:
+                err = "fatal: could not read Username for 'https://github.com': terminal prompts disabled"
+            return subprocess.CompletedProcess(cmd, 128, "", err)
+
+        with (
+            patch("boilerworks.generator.subprocess.run", side_effect=fake_run),
+            pytest.raises(RuntimeError) as exc,
+        ):
+            _clone_repo("ConflictHQ/boilerworks-private", tmp_path / "dest")
+
+        msg = str(exc.value)
+        assert "private" in msg.lower()
+        assert "gh auth login" in msg
 
 
 class TestWriteOpsConfig:
