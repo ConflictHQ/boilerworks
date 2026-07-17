@@ -1,13 +1,13 @@
 # Boilerworks Template Catalogue
-# 26 templates across Full / Micro / Edge sizes
+# 27 templates across Full / Micro / Edge sizes
 #
 # Reserved non-catalogue repos — used via manifest flags, NOT selectable entries
-# (test_registry asserts exactly 26 catalogue templates):
+# (test_registry asserts exactly 27 catalogue templates):
 #   ConflictHQ/boilerworks-opscode            — infrastructure repo (ops: true)
 #   ConflictHQ/boilerworks-react-native-expo  — mobile app addon (mobile: true → mobile/)
 # astro-site below doubles as the web_presence addon (web_presence: true → site/).
 
-# ─── Full Templates (15) ──────────────────────────────────────────────────────
+# ─── Full Templates (16) ──────────────────────────────────────────────────────
 
 - name: django-nextjs
   repo: ConflictHQ/boilerworks-django-nextjs
@@ -19,6 +19,17 @@
   description: "Data-heavy backends, admin-rich, rapid prototyping"
   topologies: [standard, omni, api-only]
   best_for: "Python teams wanting batteries-included backend with rich SPA frontend"
+
+- name: django-nextjs-copilotkit
+  repo: ConflictHQ/boilerworks-django-nextjs-copilotkit
+  size: full
+  language: python
+  backend: "Django 6"
+  frontend: "Next.js 16 + CopilotKit"
+  status: done
+  description: "django-nextjs with an agentic in-app copilot pre-wired (CopilotKit + AG-UI)"
+  topologies: [standard, omni, api-only]
+  best_for: "Python teams shipping an in-app AI copilot wired to auth, forms, and workflows"
 
 - name: nestjs-nextjs
   repo: ConflictHQ/boilerworks-nestjs-nextjs

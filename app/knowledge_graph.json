@@ -138,6 +138,20 @@
    ]
   },
   {
+   "id": "template:django-nextjs-copilotkit",
+   "name": "django-nextjs-copilotkit",
+   "type": "full",
+   "language": "python",
+   "repo": "ConflictHQ/boilerworks-django-nextjs-copilotkit",
+   "status": "done",
+   "backend": "Django 6",
+   "frontend": "Next.js 16 + CopilotKit",
+   "best_for": "Python teams shipping an in-app AI copilot wired to auth, forms, and workflows",
+   "descriptions": [
+    "django-nextjs with an agentic in-app copilot pre-wired (CopilotKit + AG-UI)"
+   ]
+  },
+  {
    "id": "template:fastapi-htmx",
    "name": "fastapi-htmx",
    "type": "full",
@@ -480,6 +494,16 @@
   },
   {
    "source": "template:django-nextjs",
+   "target": "size:full",
+   "type": "sized"
+  },
+  {
+   "source": "template:django-nextjs-copilotkit",
+   "target": "language:python",
+   "type": "written_in"
+  },
+  {
+   "source": "template:django-nextjs-copilotkit",
    "target": "size:full",
    "type": "sized"
   },

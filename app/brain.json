@@ -1,10 +1,10 @@
 {
  "meta": {
   "version": "1",
-  "generator": "aggregate-brains",
+  "generator": "gen-brain",
   "counts": {
-   "nodes": 63,
-   "edges": 84
+   "nodes": 50,
+   "edges": 61
   }
  },
  "nodes": [
@@ -52,167 +52,6 @@
    "data": {
     "date": "2026-07-11"
    }
-  },
-  {
-   "id": "django-nextjs/engine:auth1",
-   "kind": "Concept",
-   "title": "Auth engine (auth1)",
-   "text": "Auth0 OIDC server-side flow -> backend-issued JWT in httpOnly cookie; session exchange at /app/auth1/session.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "engine",
-    "feature"
-   ]
-  },
-  {
-   "id": "django-nextjs/engine:forms",
-   "kind": "Concept",
-   "title": "Form engine",
-   "text": "JSON-schema form definitions with visual builder (FormBuilder), dynamic renderer (DynamicForm), per-type config panels, conditional logic engine, and GraphQL submit pipeline.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "engine",
-    "feature"
-   ]
-  },
-  {
-   "id": "django-nextjs/engine:uploads",
-   "kind": "Concept",
-   "title": "Upload engine",
-   "text": "File uploads to MinIO/S3 with drag-and-drop frontend widget.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "engine",
-    "feature"
-   ]
-  },
-  {
-   "id": "django-nextjs/engine:workflows",
-   "kind": "Concept",
-   "title": "Workflow engine",
-   "text": "State-machine workflows with visual builder (xyflow), conditions/actions, and GraphQL API.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "engine",
-    "feature"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:celery",
-   "kind": "Dependency",
-   "title": "Celery",
-   "text": "Async task queue \u2014 worker + beat containers, Redis broker.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:django",
-   "kind": "Dependency",
-   "title": "Django 6",
-   "text": "Backend web framework \u2014 ORM, admin, auth, migrations.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:minio",
-   "kind": "Dependency",
-   "title": "MinIO",
-   "text": "S3-compatible object storage for uploads.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:nextjs",
-   "kind": "Dependency",
-   "title": "Next.js 16",
-   "text": "Frontend App Router + TypeScript + Apollo Client 4 + Tailwind/shadcn.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:opensearch",
-   "kind": "Dependency",
-   "title": "OpenSearch",
-   "text": "Full-text search indices rebuilt from the database (make reindex).",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:postgres",
-   "kind": "Dependency",
-   "title": "PostgreSQL",
-   "text": "Primary relational database.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:redis",
-   "kind": "Dependency",
-   "title": "Redis",
-   "text": "Cache and Celery broker.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/stack:strawberry",
-   "kind": "Dependency",
-   "title": "Strawberry GraphQL",
-   "text": "Code-first GraphQL layer (strawberry-graphql-django); schema assembled in config/schema.py, served at /gql/config/.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "stack"
-   ]
-  },
-  {
-   "id": "django-nextjs/template:django-nextjs",
-   "kind": "Artifact",
-   "title": "boilerworks-django-nextjs",
-   "text": "Full-stack template: Django 6 + Strawberry GraphQL backend, Next.js 16 frontend, Celery workers, Postgres/Redis/OpenSearch/MinIO services. A boilerworks metarepo submodule and federable brain node.",
-   "source": "templates/django-nextjs/scripts/gen_brain_node.py",
-   "derived": true,
-   "durability": "durable-logic",
-   "labels": [
-    "template",
-    "boilerworks"
-   ]
   },
   {
    "id": "kg:concept:shared-nextjs-frontend",
@@ -453,6 +292,26 @@
     "best_for": "Python teams wanting batteries-included backend with rich SPA frontend",
     "descriptions": [
      "Data-heavy backends, admin-rich, rapid prototyping"
+    ],
+    "subkind": "kg",
+    "kg_type": "full"
+   }
+  },
+  {
+   "id": "kg:template:django-nextjs-copilotkit",
+   "kind": "Concept",
+   "title": "django-nextjs-copilotkit",
+   "source": "app/knowledge_graph.json",
+   "derived": true,
+   "data": {
+    "language": "python",
+    "repo": "ConflictHQ/boilerworks-django-nextjs-copilotkit",
+    "status": "done",
+    "backend": "Django 6",
+    "frontend": "Next.js 16 + CopilotKit",
+    "best_for": "Python teams shipping an in-app AI copilot wired to auth, forms, and workflows",
+    "descriptions": [
+     "django-nextjs with an agentic in-app copilot pre-wired (CopilotKit + AG-UI)"
     ],
     "subkind": "kg",
     "kg_type": "full"
@@ -874,17 +733,6 @@
    }
   },
   {
-   "id": "repo:django-nextjs",
-   "kind": "Source",
-   "title": "django-nextjs",
-   "text": "Submodule 'django-nextjs' \u2014 federated sub-brain.",
-   "derived": true,
-   "data": {
-    "repo": "django-nextjs"
-   },
-   "source": "templates/django-nextjs/app/brain.json"
-  },
-  {
    "id": "term:brain-node",
    "kind": "Term",
    "title": "Brain node",
@@ -989,156 +837,6 @@
  ],
  "edges": [
   {
-   "source": "django-nextjs/engine:auth1",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/engine:forms",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/engine:uploads",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/engine:workflows",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:celery",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:django",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:minio",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:nextjs",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:opensearch",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:postgres",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:redis",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/stack:strawberry",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/engine:auth1",
-   "rel": "provides",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/engine:forms",
-   "rel": "provides",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/engine:uploads",
-   "rel": "provides",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/engine:workflows",
-   "rel": "provides",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:celery",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:django",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:minio",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:nextjs",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:opensearch",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:postgres",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:redis",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "django-nextjs/stack:strawberry",
-   "rel": "uses",
-   "class": "structural"
-  },
-  {
-   "source": "django-nextjs/template:django-nextjs",
-   "target": "repo:django-nextjs",
-   "rel": "in_repo",
-   "class": "structural"
-  },
-  {
    "source": "kg:template:astro-site",
    "target": "kg:language:typescript",
    "rel": "written_in"
@@ -1190,6 +888,16 @@
   },
   {
    "source": "kg:template:django-nextjs",
+   "target": "kg:size:full",
+   "rel": "sized"
+  },
+  {
+   "source": "kg:template:django-nextjs-copilotkit",
+   "target": "kg:language:python",
+   "rel": "written_in"
+  },
+  {
+   "source": "kg:template:django-nextjs-copilotkit",
    "target": "kg:size:full",
    "rel": "sized"
   },

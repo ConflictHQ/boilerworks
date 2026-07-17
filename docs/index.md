@@ -31,7 +31,7 @@ That's it. `boilerworks init` clones the template, renames everything from `boil
 
 ## The Catalogue
 
-26 templates across 10 stacks. Three sizes.
+27 templates across 10 stacks. Three sizes.
 
 | Size | When to use |
 |------|-------------|

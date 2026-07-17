@@ -28,7 +28,7 @@ docker compose up -d # full stack running
 ### Key commands
 
 ```bash
-boilerworks list                   # all 26 templates
+boilerworks list                   # all 27 templates
 boilerworks list --size micro      # filter by size
 boilerworks list --language python # filter by language
 boilerworks init --dry-run         # preview without writing
@@ -44,6 +44,7 @@ boilerworks init --output /path    # write to specific directory
 | Template | Backend | Frontend |
 |---|---|---|
 | django-nextjs | Django 5 | Next.js 16 |
+| django-nextjs-copilotkit | Django 6 | Next.js 16 + CopilotKit |
 | nestjs-nextjs | NestJS 11 | Next.js 16 |
 | rails-hotwire | Rails 8 | Hotwire (Turbo + Stimulus) |
 | rails-nextjs | Rails 8 | Next.js 16 |

@@ -147,6 +147,7 @@ Edge templates still include Docker Compose for **local development** — they j
 | Stack | Backend | Frontend | Status | Best For |
 |-------|---------|----------|--------|----------|
 | django-nextjs | Django 5 | Next.js 16 | Done | Data-heavy backends, admin-rich, rapid prototyping |
+| django-nextjs-copilotkit | Django 6 | Next.js 16 + CopilotKit | Done | In-app AI copilot, agentic UX on the django-nextjs base |
 | nestjs-nextjs | NestJS 11 | Next.js 16 | Done | Full TypeScript, enterprise-ish |
 | django-htmx | Django 5 | HTMX + Alpine.js | Tier 2 | Server-rendered CRUD, content-heavy, less JS |
 | saleor-nextjs | Saleor (Django) | Next.js 16 | Tier 2 | E-commerce |
@@ -203,6 +204,7 @@ When you know the domain and requirements, this is how to pick the right templat
 | E-commerce | saleor-nextjs |
 | Content / CMS / blog platform | rails-hotwire or django-htmx |
 | Dashboard / analytics / SPA | django-nextjs or nestjs-nextjs |
+| In-app AI copilot / agentic UX | django-nextjs-copilotkit |
 | Marketplace / social | rails-hotwire |
 | Simple CRUD / recipe app | django-htmx or laravel-livewire |
 | Real-time / collaborative | phoenix-liveview |
@@ -243,6 +245,8 @@ When a backend has two frontend options, this table resolves the choice.
 | Laravel | laravel-vue | laravel-livewire | SPA-like experience, complex client state | Server-rendered simplicity, rapid prototyping, less JS |
 | Go | go-htmx | go-nextjs | Lightweight, server-rendered, performance-first | API-first with rich client-side frontend |
 
+**django-nextjs-copilotkit** is django-nextjs plus a pre-wired agentic copilot (CopilotKit on the frontend, a Python-side agent over the AG-UI protocol in Django). Choose it when the app should ship with an in-app AI copilot from day one; everything else is identical to django-nextjs.
+
 **Python has two frameworks** (Django vs FastAPI): Django is batteries-included -- ORM, admin, migrations, permissions all built in. FastAPI is lean and async-first -- bring your own ORM, no admin, no opinions beyond the API layer. Choose Django when you want the full infrastructure; choose FastAPI when you want a lightweight, high-performance API.
 
 NestJS has only one answer (nestjs-nextjs) -- the whole point is full TypeScript.
@@ -258,6 +262,7 @@ Each stack has a detailed primer with code examples, architecture diagrams, and 
 | Stack | Primer | Notes |
 |-------|--------|-------|
 | django-nextjs | [PRIMER.md](django-nextjs/PRIMER.md) | Reference implementation |
+| django-nextjs-copilotkit | [PRIMER.md](django-nextjs-copilotkit/PRIMER.md) | django-nextjs + CopilotKit agentic layer |
 | nestjs-nextjs | [PRIMER.md](nestjs-nextjs/PRIMER.md) | Second reference implementation |
 | django-htmx | [PRIMER.md](django-htmx/PRIMER.md) | Shares Django backend patterns |
 | saleor-nextjs | [PRIMER.md](saleor-nextjs/PRIMER.md) | E-commerce focus |

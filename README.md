@@ -58,7 +58,7 @@ One command. Full stack. No manual setup.
 
 ## Template Catalogue
 
-26 templates across three sizes:
+27 templates across three sizes:
 
 | Size | Description | Auth | Deploy Target |
 |------|-------------|------|---------------|
@@ -66,11 +66,12 @@ One command. Full stack. No manual setup.
 | **Micro** | API services | API-key auth | VPS, containers |
 | **Edge** | Serverless apps | Flexible | Cloudflare Workers / Pages |
 
-### Full Templates (15)
+### Full Templates (16)
 
 | Name | Backend | Frontend |
 |------|---------|----------|
 | [django-nextjs](https://github.com/ConflictHQ/boilerworks-django-nextjs) | Django 5 | Next.js 16 |
+| [django-nextjs-copilotkit](https://github.com/ConflictHQ/boilerworks-django-nextjs-copilotkit) | Django 6 | Next.js 16 + CopilotKit |
 | [nestjs-nextjs](https://github.com/ConflictHQ/boilerworks-nestjs-nextjs) | NestJS 11 | Next.js 16 |
 | [rails-hotwire](https://github.com/ConflictHQ/boilerworks-rails-hotwire) | Rails 8 | Hotwire + Tailwind |
 | [rails-nextjs](https://github.com/ConflictHQ/boilerworks-rails-nextjs) | Rails 8 | Next.js 16 |
@@ -113,7 +114,7 @@ One command. Full stack. No manual setup.
 
 ```bash
 boilerworks --help              # show all commands
-boilerworks list                # show all 26 templates
+boilerworks list                # show all 27 templates
 boilerworks list --size micro   # filter by size
 boilerworks list --language python  # filter by language
 boilerworks setup               # interactive wizard
