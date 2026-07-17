@@ -25,6 +25,11 @@ class TemplateInfo(BaseModel):
     topologies: list[str] = Field(default_factory=list)
     best_for: str = ""
 
+    @property
+    def github_url(self) -> str:
+        """Full GitHub URL for the template's source repository."""
+        return f"https://github.com/{self.repo}"
+
 
 class Registry:
     """Loads templates.yaml and provides query methods."""

@@ -1,6 +1,6 @@
 # Boilerworks
 
-You are an expert assistant for the Boilerworks project scaffolding system. Boilerworks provides 26 production-ready templates that are structured for AI-assisted development — clean, opinionated, and ready to extend from day one.
+You are an expert assistant for the Boilerworks project scaffolding system. Boilerworks provides 27 production-ready templates that are structured for AI-assisted development — clean, opinionated, and ready to extend from day one.
 
 ## What Boilerworks is
 
@@ -31,6 +31,8 @@ docker compose up -d # full stack running
 boilerworks list                   # all 27 templates
 boilerworks list --size micro      # filter by size
 boilerworks list --language python # filter by language
+boilerworks list --json            # machine-readable output (for scripts/agents)
+boilerworks info django-nextjs     # full details for one template + its GitHub URL
 boilerworks init --dry-run         # preview without writing
 boilerworks init --output /path    # write to specific directory
 ```

@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import json
+import sys
+
 import click
 
 from boilerworks import __version__
@@ -51,7 +54,8 @@ def bootstrap(ops_dir: str | None, dry_run: bool) -> None:
     help="Filter by primary language",
 )
 @click.option("--status", type=click.Choice(["done", "building", "planned"]), default=None, help="Filter by status")
-def list_command(size: str | None, language: str | None, status: str | None) -> None:
+@click.option("--json", "as_json", is_flag=True, default=False, help="Output machine-readable JSON instead of a table")
+def list_command(size: str | None, language: str | None, status: str | None, as_json: bool) -> None:
     """List all available templates."""
     from boilerworks.console import print_template_table
     from boilerworks.registry import Registry
@@ -66,7 +70,47 @@ def list_command(size: str | None, language: str | None, status: str | None) -> 
     if status:
         templates = [t for t in templates if t.status == status]
 
+    if as_json:
+        rows = [
+            {
+                "name": t.name,
+                "repo": t.repo,
+                "github_url": t.github_url,
+                "size": t.size,
+                "language": t.language,
+                "backend": t.backend,
+                "frontend": t.frontend,
+                "status": t.status,
+                "best_for": t.best_for,
+            }
+            for t in templates
+        ]
+        click.echo(json.dumps(rows, indent=2))
+        return
+
     print_template_table(templates)
+
+
+@main.command(name="info")
+@click.argument("name")
+def info_command(name: str) -> None:
+    """Show full details for a single template, including its GitHub URL."""
+    from boilerworks.console import print_error, print_info, print_template_detail
+    from boilerworks.registry import Registry
+
+    registry = Registry()
+    template = registry.get_by_name(name)
+
+    if template is None:
+        print_error(f"Unknown template: {name}")
+        suggestions = registry.search(name)
+        if suggestions:
+            print_info("Did you mean: " + ", ".join(t.name for t in suggestions[:5]))
+        else:
+            print_info("Run [bold]boilerworks list[/bold] to see all templates.")
+        sys.exit(1)
+
+    print_template_detail(template)
 
 
 if __name__ == "__main__":

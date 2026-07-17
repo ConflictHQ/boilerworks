@@ -2,7 +2,7 @@
 
 **Production-ready project templates — assembled in seconds.**
 
-Boilerworks is a CLI that clones and configures any of 26 opinionated, best-of-breed project templates. Stop re-solving auth, permissions, Docker, CI, and admin panels from scratch. Pick a stack, run `boilerworks init`, and get straight to your business logic.
+Boilerworks is a CLI that clones and configures any of 27 opinionated, best-of-breed project templates. Stop re-solving auth, permissions, Docker, CI, and admin panels from scratch. Pick a stack, run `boilerworks init`, and get straight to your business logic.
 
 ```bash
 pip install boilerworks
@@ -117,6 +117,8 @@ boilerworks --help              # show all commands
 boilerworks list                # show all 27 templates
 boilerworks list --size micro   # filter by size
 boilerworks list --language python  # filter by language
+boilerworks list --json         # machine-readable output (for scripts/agents)
+boilerworks info django-nextjs  # full details for one template + its GitHub URL
 boilerworks setup               # interactive wizard
 boilerworks init                # generate project from boilerworks.yaml
 boilerworks init --dry-run      # preview what would happen

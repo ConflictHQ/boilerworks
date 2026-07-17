@@ -57,29 +57,53 @@ _NEXT_STEPS_OPS_OMNI = """[bold]Infrastructure (ops/) is inside the app repo[/bo
 """
 
 
+# Substrings in git's stderr that indicate a missing/private repo or an auth failure
+# (rather than, say, a network outage) — used to tailor the clone-failure hint.
+_AUTH_FAILURE_MARKERS = (
+    "repository not found",
+    "could not read from remote repository",
+    "permission denied",
+    "authentication failed",
+    "could not read username",
+    "terminal prompts disabled",
+    "access rights",
+)
+
+
 def _clone_repo(repo: str, dest: Path) -> None:
     """Clone repo to dest. Tries SSH first, falls back to HTTPS."""
     ssh_url = f"git@github.com:{repo}.git"
     https_url = f"https://github.com/{repo}.git"
 
-    result = subprocess.run(
+    ssh = subprocess.run(
         ["git", "clone", "--depth", "1", ssh_url, str(dest)],
         capture_output=True,
         text=True,
     )
-    if result.returncode != 0:
-        # SSH failed — try HTTPS
-        result = subprocess.run(
-            ["git", "clone", "--depth", "1", https_url, str(dest)],
-            capture_output=True,
-            text=True,
+    if ssh.returncode == 0:
+        return
+
+    # SSH failed — try HTTPS
+    https = subprocess.run(
+        ["git", "clone", "--depth", "1", https_url, str(dest)],
+        capture_output=True,
+        text=True,
+    )
+    if https.returncode == 0:
+        return
+
+    ssh_err = ssh.stderr.strip()
+    https_err = https.stderr.strip()
+    message = f"Failed to clone {repo}.\nSSH ({ssh_url}): {ssh_err}\nHTTPS ({https_url}): {https_err}"
+    if any(marker in f"{ssh_err}\n{https_err}".lower() for marker in _AUTH_FAILURE_MARKERS):
+        message += (
+            "\nThis template repo may be private, or you may lack access. Authenticate with a "
+            "GitHub SSH key or run `gh auth login`, then retry. If the name looks wrong, run "
+            "`boilerworks list` to see the valid templates."
         )
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"Failed to clone {repo}.\n"
-                f"SSH error: {result.stderr.strip()}\n"
-                "Ensure you have GitHub access (SSH key or gh auth login)."
-            )
+    else:
+        message += "\nEnsure you have network access and that GitHub is reachable."
+    raise RuntimeError(message)
 
 
 def _remove_git_dir(project_dir: Path) -> None:
