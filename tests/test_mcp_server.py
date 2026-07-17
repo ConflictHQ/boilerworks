@@ -15,9 +15,9 @@ from boilerworks.manifest import BoilerworksManifest  # noqa: E402
 
 
 class TestListTemplates:
-    def test_lists_all_26_templates(self) -> None:
+    def test_lists_all_27_templates(self) -> None:
         rows = json.loads(mcp_server.list_templates())
-        assert len(rows) == 26
+        assert len(rows) == 27
 
     def test_rows_have_expected_fields(self) -> None:
         rows = json.loads(mcp_server.list_templates())

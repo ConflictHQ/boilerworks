@@ -106,3 +106,6 @@
 [submodule "templates/typeforms"]
 	path = templates/typeforms
 	url = https://github.com/ConflictHQ/boilerworks-typeforms.git
+[submodule "templates/django-nextjs-copilotkit"]
+	path = templates/django-nextjs-copilotkit
+	url = https://github.com/ConflictHQ/boilerworks-django-nextjs-copilotkit.git

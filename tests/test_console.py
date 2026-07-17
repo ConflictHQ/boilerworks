@@ -41,11 +41,11 @@ class TestPrintTemplateTable:
         assert "django-nextjs" in output
         assert "astro-site" in output
 
-    def test_shows_26_count(self) -> None:
+    def test_shows_27_count(self) -> None:
         registry = Registry()
         templates = registry.list_all()
         output = _capture(print_template_table, templates)
-        assert "26" in output
+        assert "27" in output
 
     def test_empty_list_shows_message(self) -> None:
         output = _capture(print_template_table, [])

@@ -14,7 +14,7 @@ pip install boilerworks
 boilerworks list
 ```
 
-This shows all 26 templates with size, language, and description.
+This shows all 27 templates with size, language, and description.
 
 ```bash
 boilerworks list --size full      # only Full templates

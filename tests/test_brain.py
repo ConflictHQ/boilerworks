@@ -74,7 +74,7 @@ def test_knowledge_graph_envelope(generated):
     for e in kg["edges"]:
         assert e["source"] in ids and e["target"] in ids, f"dangling edge {e}"
     # One node per catalogue template, plus language/size/concept nodes.
-    assert sum(1 for n in kg["nodes"] if n["id"].startswith("template:")) == 26
+    assert sum(1 for n in kg["nodes"] if n["id"].startswith("template:")) == 27
 
 
 def test_brain_validates_against_schemas(generated):

@@ -18,8 +18,8 @@ def test_yaml_loads_without_error(registry: Registry) -> None:
     assert len(templates) > 0
 
 
-def test_all_26_templates_present(registry: Registry) -> None:
-    assert len(registry.list_all()) == 26
+def test_all_27_templates_present(registry: Registry) -> None:
+    assert len(registry.list_all()) == 27
 
 
 def test_templates_are_template_info_instances(registry: Registry) -> None:
@@ -29,7 +29,7 @@ def test_templates_are_template_info_instances(registry: Registry) -> None:
 
 def test_filter_by_size_full(registry: Registry) -> None:
     full = registry.filter_by_size("full")
-    assert len(full) == 15
+    assert len(full) == 16
     assert all(t.size == "full" for t in full)
 
 
@@ -99,7 +99,7 @@ def test_search_case_insensitive(registry: Registry) -> None:
 
 def test_filter_by_status_done(registry: Registry) -> None:
     done = registry.filter_by_status("done")
-    assert len(done) == 26
+    assert len(done) == 27
     assert all(t.status == "done" for t in done)
 
 
@@ -115,6 +115,6 @@ def test_all_templates_have_required_fields(registry: Registry) -> None:
 
 def test_names_returns_all_names(registry: Registry) -> None:
     names = registry.names()
-    assert len(names) == 26
+    assert len(names) == 27
     assert "django-nextjs" in names
     assert "astro-site" in names

@@ -43,7 +43,7 @@ boilerworks/         # Python package
   console.py         # Rich output helpers
   mcp_server.py      # MCP server exposing the CLI as agent tools
   data/
-    templates.yaml   # All 26 templates with metadata
+    templates.yaml   # All 27 templates with metadata
 skill/
   skill.md           # Claude Code skill (catalogue section is generated)
 scripts/
