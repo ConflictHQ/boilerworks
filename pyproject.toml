@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "boilerworks"
-version = "0.2.0"
+version = "0.3.0"
 description = "Production-ready project templates — assembled in seconds."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -20,7 +20,7 @@ classifiers = [
     "Topic :: Software Development :: Code Generators",
 ]
 dependencies = [
-    "click>=8.1",
+    "click>=8.3.3",  # PYSEC-2026-2132 / CVE-2026-7246: command injection in click.edit() (fixed in 8.3.3)
     "questionary>=2.0",
     "rich>=13.0",
     "pydantic>=2.0",
