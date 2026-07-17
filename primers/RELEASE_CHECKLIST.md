@@ -4,7 +4,7 @@ Pre-release checklist for every template. No template ships until every item is 
 
 ---
 
-## Per-Template Checklist (repeat for each of 26 templates)
+## Per-Template Checklist (repeat for each of 27 templates)
 
 ### Security
 
@@ -125,7 +125,7 @@ Adapt `package-ecosystem` per stack:
 ### Git Remotes
 
 - [ ] Decide public GitHub org name (ConflictHQ? BoilerworksHQ? boilerworks-templates?)
-- [ ] Transfer or fork all 26 repos to public org
+- [ ] Transfer or fork all 27 repos to public org
 - [ ] Update all remote URLs
 
 ---
@@ -147,7 +147,7 @@ For each template, the human does a live check:
 ## Release Sequence
 
 1. Clean up root repo (remove internal docs, handle CONTEXT.md)
-2. Add Dependabot config to all 26 template repos
+2. Add Dependabot config to all 27 template repos
 3. Run security audit on all templates, fix critical/high findings
 4. Update LICENSE copyright holder across all templates
 5. Human live-check each template (boot, auth, CRUD, branding)

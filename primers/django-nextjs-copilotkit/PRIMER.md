@@ -72,7 +72,7 @@ Browser
         +-- /api/copilotkit (Next.js route: CopilotRuntime bridge,
               |              forwards session cookies)
               v
-        POST /copilot/agui/  (Django async view, session-auth gated)
+        POST /app/copilot/agui/  (Django async view, session-auth gated)
               |
               v
         Pydantic AI agent (AG-UI protocol, Anthropic model)
@@ -107,7 +107,7 @@ uvicorn/daphne for token-by-token streaming.
 | Universal Concept | This Stack | Notes |
 |-------------------|-----------|-------|
 | Copilot agent | `copilot` app, Pydantic AI | Agent + tools + deps in `backend/copilot/` |
-| Agent endpoint | `POST /copilot/agui/` | Django async view, SSE streaming, session auth |
+| Agent endpoint | `POST /app/copilot/agui/` | Django async view, SSE streaming, session auth |
 | Copilot UI | `frontend/copilot/` | Provider, sidebar, generative UI, HITL components |
 | UI <-> agent bridge | `/api/copilotkit` route | CopilotRuntime + AG-UI HttpAgent, cookie forwarding |
 | Copilot feature flag | `config/features.py` | Same toggle pattern as every other feature |
