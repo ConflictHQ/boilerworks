@@ -1,0 +1,17 @@
+# Boilerworks Developer Docs
+
+> Documentation for the Boilerworks CLI and template catalogue — 27 production-ready full-stack templates across 10 languages. Install with `pip install boilerworks`, run `boilerworks init`, and ship an app with auth, database, background jobs, Docker, and CI pre-wired.
+
+## Documentation sections
+
+- Home / install: https://boilerworks.dev/
+- Getting started: https://boilerworks.dev/getting-started/
+- Guides: https://boilerworks.dev/guide/
+- CLI reference: https://boilerworks.dev/cli/
+- Contributing: https://boilerworks.dev/contributing/
+
+## Related
+
+- Template catalogue and product site: https://boilerworks.ai/ (llms: https://boilerworks.ai/llms.txt)
+- Source and all template repos: https://github.com/ConflictHQ
+- Built by CONFLICT, an AI-native software engineering firm: https://weareconflict.com/ (full text: https://weareconflict.com/llms-full.txt)

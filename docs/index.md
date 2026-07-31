@@ -2,7 +2,7 @@
 
 **Stop vibe-coding scaffolding. Pick a template. Ship.**
 
-Boilerworks is a catalogue of opinionated, production-ready full-stack templates. One command gets you from zero to a running app with auth, database, background jobs, Docker, and CI — all pre-wired.
+Boilerworks is a catalogue of opinionated, production-ready full-stack templates. One command gets you from zero to a running app with auth, database, background jobs, Docker, and CI — all pre-wired. Browse the full template catalogue at [boilerworks.ai](https://boilerworks.ai/).
 
 ---
 
