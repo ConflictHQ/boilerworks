@@ -8,6 +8,7 @@ import sys
 import click
 
 from boilerworks import __version__
+from boilerworks.happy_path import SUPPORTED
 
 
 @click.group()
@@ -33,6 +34,57 @@ def init_command(manifest_path: str | None, output_dir: str, dry_run: bool) -> N
     from boilerworks.generator import generate_from_manifest
 
     generate_from_manifest(manifest_path=manifest_path, output_dir=output_dir, dry_run=dry_run)
+
+
+@main.command(name="new")
+@click.argument("template", type=click.Choice(sorted(SUPPORTED)))
+@click.argument("project")
+@click.option(
+    "--name", "product_name", default=None, help="Product name (default: from the project slug, my-app → My App)"
+)
+@click.option("--repo", default=None, help="The new app's GitHub repo, owner/name (manifests, registration, catalog)")
+@click.option("--output", "output_dir", default=".", show_default=True, help="Output directory for generated project")
+@click.option("--dry-run", is_flag=True, default=False, help="Print what would happen without doing it")
+@click.option(
+    "--register/--no-register",
+    default=None,
+    help="Register the backend, web and Storybook apps with the Astrolift CLI (default: ask when interactive)",
+)
+@click.option("--project-id", default=None, help="Astrolift project GUID to register the apps under")
+@click.option("--manifest-raw", is_flag=True, default=False, help="Send the local manifests with the registration")
+@click.option(
+    "--catalog",
+    type=click.Choice(["print", "pr", "skip"]),
+    default=None,
+    help="Front door catalogs.json entry: print it, or open a PR on calliopeai/calliope-ux (default: ask)",
+)
+def new_command(
+    template: str,
+    project: str,
+    product_name: str | None,
+    repo: str | None,
+    output_dir: str,
+    dry_run: bool,
+    register: bool | None,
+    project_id: str | None,
+    manifest_raw: bool,
+    catalog: str | None,
+) -> None:
+    """Create an app on the Calliope AI happy path from a supported template."""
+    from boilerworks.happy_path import run_new
+
+    run_new(
+        template=template,
+        project=project,
+        name=product_name,
+        repo=repo,
+        output_dir=output_dir,
+        dry_run=dry_run,
+        register=register,
+        project_id=project_id,
+        manifest_raw=manifest_raw,
+        catalog=catalog,
+    )
 
 
 @main.command()

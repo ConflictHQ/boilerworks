@@ -124,7 +124,26 @@ boilerworks init                # generate project from boilerworks.yaml
 boilerworks init --dry-run      # preview what would happen
 boilerworks init --manifest ./path/to/boilerworks.yaml
 boilerworks init --output /path/to/output
+boilerworks new django-nextjs my-app --repo my-org/my-app   # Calliope AI happy path (below)
 ```
+
+---
+
+## The Calliope AI happy path
+
+Three templates ship the Calliope AI design system (`@calliopelabs/ui`), a Storybook with a11y
+gates, and three Astrolift manifests (the backend at the root, the web app in its web directory,
+`storybook/astrolift.toml`): `nestjs-nextjs`, `django-nextjs` and `fastapi-nextjs`.
+`boilerworks new` generates one with its Astrolift slugs and product name renamed, then, only when
+you ask, registers the apps with Astrolift and adds the Storybook to the
+[Calliope AI UX front door](https://github.com/calliopeai/calliope-ux):
+
+```bash
+boilerworks new nestjs-nextjs my-app --name "My App" --repo my-org/my-app \
+  --register --project-id <astrolift-project-guid> --catalog pr
+```
+
+See [`docs/cli/new.md`](docs/cli/new.md).
 
 ---
 
