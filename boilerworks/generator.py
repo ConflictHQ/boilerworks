@@ -5,6 +5,7 @@ from __future__ import annotations
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 from rich.progress import Progress, SpinnerColumn, TextColumn
@@ -310,7 +311,14 @@ def generate_from_manifest(
     _generate(manifest, out)
 
 
-def _generate(manifest: BoilerworksManifest, output_dir: Path) -> None:
+def _generate(
+    manifest: BoilerworksManifest,
+    output_dir: Path,
+    extra_replacements: dict[str, str] | None = None,
+    post_render: Callable[[Path], object] | None = None,
+) -> Path:
+    """Generate the project. ``extra_replacements`` run before the standard ones on the app template;
+    ``post_render`` edits the rendered app before its first commit. Returns the project directory."""
     registry = Registry()
     template = registry.get_by_name(manifest.family)
     if template is None:
@@ -324,7 +332,7 @@ def _generate(manifest: BoilerworksManifest, output_dir: Path) -> None:
         print_info("Delete it first or choose a different output directory.")
         sys.exit(1)
 
-    replacements = build_replacements(manifest.project)
+    replacements = {**(extra_replacements or {}), **build_replacements(manifest.project)}
 
     with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True) as progress:
         # ── App template ──────────────────────────────────────────────────────
@@ -348,6 +356,9 @@ def _generate(manifest: BoilerworksManifest, output_dir: Path) -> None:
         task = progress.add_task("Renaming paths…", total=None)
         rename_boilerworks_paths(project_dir, manifest.project)
         progress.remove_task(task)
+
+        if post_render is not None:
+            post_render(project_dir)
 
         # ── Addons: mobile app + marketing site (inside the app repo) ────────
         if manifest.mobile:
@@ -417,3 +428,4 @@ def _generate(manifest: BoilerworksManifest, output_dir: Path) -> None:
             border_style="green",
         )
     )
+    return project_dir

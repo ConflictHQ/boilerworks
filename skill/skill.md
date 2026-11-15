@@ -35,7 +35,14 @@ boilerworks list --json            # machine-readable output (for scripts/agents
 boilerworks info django-nextjs     # full details for one template + its GitHub URL
 boilerworks init --dry-run         # preview without writing
 boilerworks init --output /path    # write to specific directory
+boilerworks new django-nextjs my-app --repo my-org/my-app  # Calliope AI happy path (nestjs/django/fastapi-nextjs)
 ```
+
+`boilerworks new <template> <project>` is the Calliope AI happy path for `nestjs-nextjs`,
+`django-nextjs` and `fastapi-nextjs`: it renames the Astrolift slugs (`<project>`,
+`<project>-web`, `storybook-<project>`) and the product name in `ui-app/product.ts`. Registering
+with Astrolift (`--register --project-id <guid>`) and the front door entry
+(`--catalog print|pr`) happen only when asked; never pass them without the user's go-ahead.
 
 ## Template catalogue
 

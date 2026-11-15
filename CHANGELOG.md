@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- CLI: `boilerworks new <template> <project>`, the Calliope AI happy path for
+  `nestjs-nextjs`, `django-nextjs` and `fastapi-nextjs`. It renames the three
+  Astrolift manifests' slugs (`<project>`, `<project>-web`,
+  `storybook-<project>`), display names and repo, and the product id and name
+  in `ui-app/product.ts`. Behind flags or prompts, never by default: registers
+  the three apps with `astro app register` (`--register --project-id`), and
+  prints or opens as a PR the front door `catalogs.json` entry for
+  calliopeai/calliope-ux (`--catalog print|pr`)
+
 ## 0.3.0 — 2026-07-17
 
 - 27-template registry: `django-nextjs-copilotkit` — the first template with a

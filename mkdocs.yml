@@ -78,6 +78,7 @@ nav:
   - CLI Reference:
       - setup: cli/setup.md
       - init: cli/init.md
+      - new: cli/new.md
       - list: cli/list.md
       - bootstrap: cli/bootstrap.md
   - Contributing: contributing.md
